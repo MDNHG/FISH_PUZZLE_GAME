@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviour 
 {
-    private int e_value = 1;
+    [SerializeField] private int e_value = 1;
     public int GetValue() // Use for Reciever
     {
         return e_value;
@@ -11,6 +11,6 @@ public class Bullet : MonoBehaviour
     public void IncreaseValue(int amount) // Use for Amplifer
     {
         e_value+=amount;
-        gameObject.transform.localScale+= new Vector3(amount,amount,1);
+        gameObject.transform.localScale*=2;
     }
 }

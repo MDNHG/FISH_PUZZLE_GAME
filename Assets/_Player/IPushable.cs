@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class IPushable : MonoBehaviour
+public interface IPushable 
 {
     // This script is only using for identifying pushable object
 }

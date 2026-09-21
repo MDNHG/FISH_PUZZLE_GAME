@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
         {
            RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, playerInput.Player.Move.ReadValue<Vector2>(),1);
 
-            if (hit.collider != null && hit.collider.GetComponent<IPushable>() && !IsObjectBlocked(hit.collider.gameObject,  playerInput.Player.Move.ReadValue<Vector2>()))
+            if (hit.collider != null && hit.collider.GetComponent<IPushable>() != null && !IsObjectBlocked(hit.collider.gameObject,  playerInput.Player.Move.ReadValue<Vector2>()))
             {
                 ChangeGridPosition(playerInput.Player.Move.ReadValue<Vector2>(), hit.collider.gameObject);
                 ChangeShootPosition(playerInput.Player.Move.ReadValue<Vector2>());
@@ -89,7 +89,7 @@ public class Player : MonoBehaviour
     bool IsBlocked(Vector2 direction)
     {
         RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position,direction,1);
-        if (hit.collider != null && hit.collider.GetComponent<IPushable>())
+        if (hit.collider != null && hit.collider.GetComponent<IPushable>() != null)
         return false;  
         if (hit.collider != null && hit.collider.GetComponent<Bullet>())
         return false;     
