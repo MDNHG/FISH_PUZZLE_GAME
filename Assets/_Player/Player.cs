@@ -13,24 +13,32 @@ public class Player : MonoBehaviour
         playerInput = new Player_Input();
         playerInput.Player.Enable();
     }
+    void OnEnable()
+    {
+        playerInput.Player.Enable();
+    }
+    void OnDisable()
+    {
+        playerInput.Player.Disable();
+    }
     void Start()
     {
         ammo_left = MAX_AMMO;
+        shoot_direction = new Vector2(1,0); // Vừa spawn nếu bắn sẽ ra velocity = 0 
         gameObject.transform.position = MAIN_GRID.GetCellCenterWorld(GetCellPosition(gameObject));
     }
     void Update()
     {
         if(playerInput.Player.Move.triggered && !IsBlocked(playerInput.Player.Move.ReadValue<Vector2>()))
         {
-            // Continue here (fixing the collider dectect)
-           RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, playerInput.Player.Move.ReadValue<Vector2>(), 1f);
+           RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, playerInput.Player.Move.ReadValue<Vector2>(),1);
 
-            if (hit.collider != null && hit.collider.GetComponent<IPushable>())
+            if (hit.collider != null && hit.collider.GetComponent<IPushable>() && !IsObjectBlocked(hit.collider.gameObject,  playerInput.Player.Move.ReadValue<Vector2>()))
             {
                 ChangeGridPosition(playerInput.Player.Move.ReadValue<Vector2>(), hit.collider.gameObject);
                 ChangeShootPosition(playerInput.Player.Move.ReadValue<Vector2>());
             }
-            else
+            else if (hit.collider == null || hit.collider.GetComponent<IPushable>() == null) // Tranh viec raycast hit voi vien dan
             {
                 ChangeGridPosition(playerInput.Player.Move.ReadValue<Vector2>());
                 ChangeShootPosition(playerInput.Player.Move.ReadValue<Vector2>());
@@ -80,9 +88,17 @@ public class Player : MonoBehaviour
     }
     bool IsBlocked(Vector2 direction)
     {
-        RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position,direction,1,1<<LayerMask.GetMask("Passable"));
+        RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position,direction,1);
         if (hit.collider != null && hit.collider.GetComponent<IPushable>())
-        return false;      
+        return false;  
+        if (hit.collider != null && hit.collider.GetComponent<Bullet>())
+        return false;     
+        return hit;
+    }
+    bool IsObjectBlocked(GameObject gameobject,Vector2 direction)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(gameobject.transform.position,direction,1,~LayerMask.GetMask("Passable")); // Passable sẽ là layer chung cho những vật đẩy duoc;            
         return hit;
     }
 }
+
