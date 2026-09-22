@@ -1114,6 +1114,7 @@ GameObject:
   - component: {fileID: 1333336079}
   - component: {fileID: 1333336078}
   - component: {fileID: 1333336080}
+  - component: {fileID: 1333336081}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -1190,7 +1191,7 @@ Transform:
   m_GameObject: {fileID: 1333336076}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.07305, y: 0.42677, z: 0}
+  m_LocalPosition: {x: 1.5, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1209,7 +1210,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   MAIN_GRID: {fileID: 632078183}
-  MAX_AMMO: 5
+--- !u!114 &1333336081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333336076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f0785ac3142b27488e80d5dbf3b2a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player_Shoot
+  MAIN_GRID: {fileID: 632078183}
+  MAX_AMMO: 3
   bullet_prefab: {fileID: 4080193086715172661, guid: 5e5824ec231b27741a7b5d1863489eef, type: 3}
 --- !u!1 &1963348256
 GameObject:
