@@ -1,16 +1,22 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Bullet : MonoBehaviour 
 {
     [SerializeField] private int e_value = 1;
-    public int GetValue() // Use for Reciever
+    public int GetEValue() // Use for Reciever
     {
         return e_value;
     }
-    public void IncreaseValue(int amount) // Use for Amplifer
+    public void IncreaseEValue(int amount) // Use for Amplifer
     {
         e_value+=amount;
         gameObject.transform.localScale*=2;
+    }
+    private void OnTriggerEnter2D( Collider2D colldier)
+    {
+        if(colldier.gameObject.GetComponent<Wall>())
+        {
+            Destroy(gameObject);
+        }
     }
 }
