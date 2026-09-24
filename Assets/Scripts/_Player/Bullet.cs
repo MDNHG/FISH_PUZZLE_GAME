@@ -18,5 +18,9 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if(colldier.gameObject.GetComponent<Door>())
+        {
+            Destroy(gameObject);
+        }
     }
 }

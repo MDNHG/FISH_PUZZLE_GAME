@@ -12,7 +12,8 @@ public class WarpGate : MonoBehaviour
     {
         col = gameObject.GetComponent<BoxCollider2D>();
         spt = gameObject.GetComponent<SpriteRenderer>();        
-        default_cl.a = 0.5f;
+        default_cl =  spt.color ;
+        default_cl.a = 0.1f;
         spt.color = default_cl;
         col.enabled = false;
     }
@@ -26,9 +27,9 @@ public class WarpGate : MonoBehaviour
         default_cl.a = 1f;
         spt.color = default_cl;
     }
-    void OnTriggerEnter(Collider collider)
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.GetComponent<Player_Movement>() != null)
+        if(collider.gameObject.GetComponent<Player_Movement>() != null)
         {
             ProccessWining();
         }

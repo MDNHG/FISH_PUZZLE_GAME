@@ -18,12 +18,25 @@ public class Rotator : MonoBehaviour,IPushable
         RIGHT,
         LEFT,
     }
-    
+    [SerializeField] GameObject input_indicator, output_indicator;
     [SerializeField] Direction turn_direction; 
     [SerializeField] Input input_direction;
     private float turn_angle = 90;
     void Start()
     {
+        input_indicator.transform.localPosition = ToVector2(input_direction);
+        input_indicator.transform.eulerAngles = new Vector3(0,0,ToAngle(input_direction));
+        if(turn_direction == Direction.LEFT)
+        {
+            output_indicator.transform.localPosition = new Vector3(-2,2,0);
+            output_indicator.transform.localEulerAngles = new Vector3(0,0,90);
+        }
+        else
+        {
+            
+            output_indicator.transform.localPosition = new Vector3(2,2,0);
+            output_indicator.transform.localEulerAngles = new Vector3(0,0,-90);
+        }
     }
     void Update()
     {
@@ -53,6 +66,17 @@ public class Rotator : MonoBehaviour,IPushable
             Input.LEFT  => new Vector2(-1, 0),
             Input.RIGHT => new Vector2(1, 0),
             _  =>  Vector2.zero 
+        };
+    }
+    private float ToAngle(Input input) // Code tam thoi de handle visual cua input ouput
+    {
+    return input switch
+        {
+            Input.UP => 0,
+            Input.DOWN  => 180,
+            Input.LEFT  => -90,
+            Input.RIGHT => 90,
+            _  =>  0 
         };
     }
 }

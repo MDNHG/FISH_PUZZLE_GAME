@@ -24,7 +24,10 @@ public class Player_Movement : MonoBehaviour {
             if (!IsBlocked(moveDir)) {
 
                 RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, moveDir, 1,~LayerMask.GetMask("Bullet"));
-
+                if(hit.collider != null && hit.collider.GetComponent<WarpGate>() != null)
+                {
+                    ProcessWining();
+                }
                 if (hit.collider != null && hit.collider.GetComponent<IPushable>() != null && !IsObjectBlocked(hit.collider.gameObject, moveDir)) {
                     ChangeGridPosition(moveDir, hit.collider.gameObject);
                 }
@@ -53,7 +56,7 @@ public class Player_Movement : MonoBehaviour {
         Physics2D.queriesStartInColliders = false; // Avoid raycast into object own collider
         RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, direction,1, ~LayerMask.GetMask("Bullet"));
         Physics2D.queriesStartInColliders = true;            
-       if (hit.collider != null && hit.collider.GetComponent<IPushable>() != null)
+       if (hit.collider != null && (hit.collider.GetComponent<IPushable>() != null ||hit.collider.GetComponent<WarpGate>() != null))
             return false;
             return hit;
     }
@@ -62,5 +65,9 @@ public class Player_Movement : MonoBehaviour {
         RaycastHit2D hit = Physics2D.Raycast(gameobject.transform.position, direction, 1);
         Physics2D.queriesStartInColliders = true;            
         return hit;
+    }
+    void ProcessWining()
+    {
+        Debug.Log("You win");
     }
 }

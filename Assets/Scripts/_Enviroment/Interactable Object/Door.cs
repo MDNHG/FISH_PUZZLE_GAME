@@ -14,7 +14,7 @@ public class Door : MonoBehaviour
         Player_Movement.Move += DecreaseTickOnPlayerMove;
         col = gameObject.GetComponent<BoxCollider2D>();
         spt = gameObject.GetComponent<SpriteRenderer>();        
-        spt.color = default_cl;
+        default_cl = spt.color;
     }
 
     void Update()
