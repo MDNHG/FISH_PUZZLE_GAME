@@ -24,18 +24,8 @@ public class WarpGate : MonoBehaviour
     public void Activate()
     {
         col.enabled = true;
+        //Se tach ra script visual rieng
         default_cl.a = 1f;
         spt.color = default_cl;
-    }
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        if(collider.gameObject.GetComponent<Player_Movement>() != null)
-        {
-            ProccessWining();
-        }
-    }
-    void ProccessWining()
-    {
-        Debug.Log("You win");
     }
 }

@@ -14,7 +14,7 @@ public class Door : MonoBehaviour
         Player_Movement.Move += DecreaseTickOnPlayerMove;
         col = gameObject.GetComponent<BoxCollider2D>();
         spt = gameObject.GetComponent<SpriteRenderer>();        
-        default_cl = spt.color;
+        default_cl = spt.color; // Se tach ra mot script visual rieng
     }
 
     void Update()
@@ -31,12 +31,14 @@ public class Door : MonoBehaviour
     private void Activate()
     {
         col.enabled = false;
-        default_cl.a = 0.5f;
+        //Se tach ra script VS rieng
+        default_cl.a = 0.5f; 
         spt.color = default_cl;
     }
     private void Deactivate()
     {
         col.enabled = true;
+        //Se tach ra script VS rieng
         default_cl.a = 1;
         spt.color = default_cl;
     }
