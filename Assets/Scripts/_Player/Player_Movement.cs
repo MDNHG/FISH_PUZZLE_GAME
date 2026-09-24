@@ -1,11 +1,13 @@
+using System;
 using UnityEngine;
 
 public class Player_Movement : MonoBehaviour {
+    
     [SerializeField] Grid MAIN_GRID;
+    public static event Action Move; // Dung de dem tick khi nguoi choi di chuyen
     public Player_Input pI {
         get; private set;
     }
-
     void Awake() {
         pI = new Player_Input();
     }
@@ -21,8 +23,11 @@ public class Player_Movement : MonoBehaviour {
             Vector2 moveDir = pI.Player.Move.ReadValue<Vector2>();
             if (!IsBlocked(moveDir)) {
 
-                RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, moveDir, 1);
-
+                RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, moveDir, 1,~LayerMask.GetMask("Bullet"));
+                if(hit.collider != null && hit.collider.GetComponent<WarpGate>() != null)
+                {
+                    ProcessWining();
+                }
                 if (hit.collider != null && hit.collider.GetComponent<IPushable>() != null && !IsObjectBlocked(hit.collider.gameObject, moveDir)) {
                     ChangeGridPosition(moveDir, hit.collider.gameObject);
                 }
@@ -37,26 +42,32 @@ public class Player_Movement : MonoBehaviour {
     void ChangeGridPosition(Vector2 direction, GameObject push_object = null) {
         Vector3Int playerPos = GetCellPosition(gameObject);
         gameObject.transform.position = MAIN_GRID.GetCellCenterWorld(playerPos + new Vector3Int((int)direction.x, (int)direction.y, 0));
-
+        Move?.Invoke(); // Dem tick khi nguoi coi di chuyen
         if (push_object != null) {
             Vector3Int objPos = GetCellPosition(push_object);
             push_object.transform.position = MAIN_GRID.GetCellCenterWorld(objPos + new Vector3Int((int)direction.x, (int)direction.y, 0));
+            
         }
-
     }
     private Vector3Int GetCellPosition(GameObject gameobject) {
         return MAIN_GRID.WorldToCell(gameobject.transform.position);
     }
     bool IsBlocked(Vector2 direction) {
-        RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, direction, 1);
-        if (hit.collider != null && hit.collider.GetComponent<IPushable>() != null)
+        Physics2D.queriesStartInColliders = false; // Avoid raycast into object own collider
+        RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, direction,1, ~LayerMask.GetMask("Bullet"));
+        Physics2D.queriesStartInColliders = true;            
+       if (hit.collider != null && (hit.collider.GetComponent<IPushable>() != null ||hit.collider.GetComponent<WarpGate>() != null))
             return false;
-        if (hit.collider != null && hit.collider.GetComponent<Bullet>())
-            return false;
-        return hit;
+            return hit;
     }
     bool IsObjectBlocked(GameObject gameobject, Vector2 direction) {
-        RaycastHit2D hit = Physics2D.Raycast(gameobject.transform.position, direction, 1, ~LayerMask.GetMask("Passable")); // Passable sẽ là layer chung cho những vật đẩy duoc;            
+        Physics2D.queriesStartInColliders = false; // Avoid raycast into object own collider
+        RaycastHit2D hit = Physics2D.Raycast(gameobject.transform.position, direction, 1);
+        Physics2D.queriesStartInColliders = true;            
         return hit;
+    }
+    void ProcessWining()
+    {
+        Debug.Log("You win");
     }
 }

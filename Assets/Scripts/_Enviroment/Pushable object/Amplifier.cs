@@ -14,7 +14,7 @@ public class Amplifier : MonoBehaviour, IPushable
     {
         if(collider.gameObject.GetComponent<Bullet>() is Bullet temp)
         {
-            temp.IncreaseValue(1);
+            temp.IncreaseEValue(1);
         }
 
     }

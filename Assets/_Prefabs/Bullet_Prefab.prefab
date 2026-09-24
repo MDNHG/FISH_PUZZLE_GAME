@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 612241519312849499}
   - component: {fileID: 2250660006305454841}
   - component: {fileID: 6816425123105861813}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bullet_Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -290,3 +290,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 019aca2a11edc884f97d47497b4ad9bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
+  e_value: 1
