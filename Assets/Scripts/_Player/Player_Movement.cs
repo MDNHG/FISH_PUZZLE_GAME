@@ -5,6 +5,7 @@ public class Player_Movement : MonoBehaviour {
 
     [SerializeField] Grid MAIN_GRID;
     public static event Action Move; // Dung de dem tick khi nguoi choi di chuyen
+    public static event Action EnterWarpGate; // Dùng để gọi những hàm xử lí winning.
     public Player_Input pI {
         get; private set;
     }
