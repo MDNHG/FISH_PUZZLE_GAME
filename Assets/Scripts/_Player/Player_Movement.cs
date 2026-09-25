@@ -5,6 +5,7 @@ public class Player_Movement : MonoBehaviour {
     
     [SerializeField] Grid MAIN_GRID;
     public static event Action Move; // Dung de dem tick khi nguoi choi di chuyen
+    public static event Action EnterWarpGate; // Dùng để gọi những hàm xử lí winning.
     public Player_Input pI {
         get; private set;
     }
@@ -26,7 +27,7 @@ public class Player_Movement : MonoBehaviour {
                 RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, moveDir, 1,~LayerMask.GetMask("Bullet"));
                 if(hit.collider != null && hit.collider.GetComponent<WarpGate>() != null)
                 {
-                    ProcessWining();
+                    EnterWarpGate?.Invoke();
                 }
                 if (hit.collider != null && hit.collider.GetComponent<IPushable>() != null && !IsObjectBlocked(hit.collider.gameObject, moveDir)) {
                     ChangeGridPosition(moveDir, hit.collider.gameObject);
@@ -65,9 +66,5 @@ public class Player_Movement : MonoBehaviour {
         RaycastHit2D hit = Physics2D.Raycast(gameobject.transform.position, direction, 1);
         Physics2D.queriesStartInColliders = true;            
         return hit;
-    }
-    void ProcessWining()
-    {
-        Debug.Log("You win");
     }
 }
