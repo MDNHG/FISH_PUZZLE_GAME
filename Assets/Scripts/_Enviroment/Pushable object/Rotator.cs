@@ -24,6 +24,7 @@ public class Rotator : MonoBehaviour,IPushable
     private float turn_angle = 90;
     void Start()
     {
+        //Tat ca se chuyen sang script rieng khi co visual
         input_indicator.transform.localPosition = ToVector2(input_direction);
         input_indicator.transform.eulerAngles = new Vector3(0,0,ToAngle(input_direction));
         if(turn_direction == Direction.LEFT)

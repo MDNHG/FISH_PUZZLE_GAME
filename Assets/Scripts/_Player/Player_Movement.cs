@@ -13,6 +13,7 @@ public class Player_Movement : MonoBehaviour {
     // Cache the raycast length from the grid's actual cell size,
     // instead of using a fixed value of 1.
     float MoveDistance => MAIN_GRID.cellSize.x;
+    Vector2 targetposition;
 
     void Awake() {
         pI = new Player_Input();
@@ -23,8 +24,13 @@ public class Player_Movement : MonoBehaviour {
     void OnDisable() {
         pI.Player.Disable();
     }
+    void Start()
+    {
+        gameObject.transform.position =  MAIN_GRID.GetCellCenterWorld(GetCellPosition(gameObject));
+    }
 
     void Update() {
+        gameObject.transform.position = Vector2.MoveTowards(gameObject.transform.position, targetposition,2);
         if (pI.Player.Move.triggered) {
             Vector2 moveDir = pI.Player.Move.ReadValue<Vector2>();
             if (!IsBlocked(moveDir)) {
@@ -48,7 +54,7 @@ public class Player_Movement : MonoBehaviour {
 
     void ChangeGridPosition(Vector2 direction, GameObject push_object = null) {
         Vector3Int playerPos = GetCellPosition(gameObject);
-        gameObject.transform.position = MAIN_GRID.GetCellCenterWorld(playerPos + new Vector3Int((int)direction.x, (int)direction.y, 0));
+        targetposition = MAIN_GRID.GetCellCenterWorld(playerPos + new Vector3Int((int)direction.x, (int)direction.y, 0));
         Move?.Invoke(); // Dem tick khi nguoi coi di chuyen
         if (push_object != null) {
             Vector3Int objPos = GetCellPosition(push_object);

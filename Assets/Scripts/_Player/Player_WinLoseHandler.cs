@@ -17,7 +17,6 @@ public class Player_ : MonoBehaviour
     }
     void Winning()
     {
-        
     }
     void BeingCrushedbyDoor()
     {
