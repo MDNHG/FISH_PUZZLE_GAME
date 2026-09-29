@@ -1,8 +1,11 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Door : MonoBehaviour
 {
+    public static event Action crushPlayer;
     int tick_left = 0;
     private SpriteRenderer spt;
     private BoxCollider2D col;
@@ -23,7 +26,7 @@ public class Door : MonoBehaviour
         {
             Activate();
         }
-        else if(tick_left == 0)
+        else if(tick_left == 0 && col.enabled == false)
         {
             Deactivate();
         }
@@ -31,17 +34,17 @@ public class Door : MonoBehaviour
     private void Activate()
     {
         col.enabled = false;
-        //Se tach ra script VS rieng
         default_cl.a = 0.5f; 
         spt.color = default_cl;
     }
     private void Deactivate()
-    {
-        col.enabled = true;
-        //Se tach ra script VS rieng
+    {    
+    CheckOverlap();
+    col.enabled = true;
         default_cl.a = 1;
         spt.color = default_cl;
     }
+    
     public void ChangeTick(int amount)
     {
         tick_left += amount;
@@ -55,4 +58,19 @@ public class Door : MonoBehaviour
         Debug.Log(tick_left);
         }
     }
+    private void CheckOverlap()
+    {
+        Vector2 center = col.bounds.center;
+        Vector2 size = col.bounds.size;
+        Collider2D hit = Physics2D.OverlapBox(center, size, 0f);
+        if (hit != null && hit.gameObject.GetComponent<Player_Movement>() != null)
+        {
+            crushPlayer?.Invoke();
+        }
+    }
+    public int GetTickLeft()
+    {
+        return tick_left;
+    }
+    
 }
