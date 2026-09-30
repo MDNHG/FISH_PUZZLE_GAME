@@ -12,10 +12,12 @@ public class Laser : MonoBehaviour
         RIGHT,
         LEFT,
     }
+    [SerializeField] float laser_duration;
     [SerializeField] Direction SHOOT_DIRECTION;
     [SerializeField] int tick_left;
     [SerializeField] int tick_cap;
     private Vector2 shoot_direction; 
+    private bool is_firing;
     void Start()
     {
         shoot_direction = ToVector2(SHOOT_DIRECTION);
@@ -33,12 +35,13 @@ public class Laser : MonoBehaviour
     }
     void DecreaseTick()
     {
+        if (is_firing) return;
         tick_left--;
     }
     void FireLaser()
     {
         Debug.Log("Fire");
-        StartCoroutine(FireLaserForSecond(5f));
+        StartCoroutine(FireLaserForSecond(laser_duration));
         
     }
     private Vector2 ToVector2(Direction dir)
@@ -56,9 +59,9 @@ public class Laser : MonoBehaviour
     {
         float timer = 0;
         Physics2D.queriesStartInColliders = false;
+        is_firing = true;
         while(timer < second)
         {
-            
             RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, shoot_direction, 100f);
             Debug.DrawRay(gameObject.transform.position, shoot_direction, Color.white, second);
             if(hit.collider.gameObject.GetComponent<Player_Movement>() != null)
@@ -66,8 +69,9 @@ public class Laser : MonoBehaviour
                 roastPlayer?.Invoke();
             }
             timer+=1*Time.deltaTime;
+            yield return null;
         }
+        is_firing = false;
         Physics2D.queriesStartInColliders = true;
-        yield return new WaitForSeconds(0f);
     }
 }

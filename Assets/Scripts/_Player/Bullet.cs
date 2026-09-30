@@ -22,5 +22,9 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if (colldier.gameObject.GetComponent<BasicPushableBox>())
+        {
+            Destroy(gameObject);
+        }
     }
 }
