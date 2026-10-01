@@ -20,7 +20,7 @@ public class WarpReciever : MonoBehaviour
     {
         if(collider.gameObject.GetComponent<Bullet>() is Bullet bullet)
         {
-            cur_e++;
+            cur_e += bullet.GetEValue();
             Destroy(collider.gameObject);
         }
     }

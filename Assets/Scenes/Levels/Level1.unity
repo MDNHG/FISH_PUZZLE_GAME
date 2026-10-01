@@ -1810,7 +1810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f0785ac3142b27488e80d5dbf3b2a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player_Shoot
-  MAIN_GRID: {fileID: 0}
+  MAIN_GRID: {fileID: 632078183}
   MAX_AMMO: 10
   bullet_prefab: {fileID: 4080193086715172661, guid: 5e5824ec231b27741a7b5d1863489eef, type: 3}
 --- !u!114 &1097097588
@@ -1825,7 +1825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c28016d830cac489db14c2b4bbd619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  MAIN_GRID: {fileID: 0}
+  MAIN_GRID: {fileID: 632078183}
 --- !u!4 &1097097589
 Transform:
   m_ObjectHideFlags: 0
