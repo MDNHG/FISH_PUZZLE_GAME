@@ -19,6 +19,7 @@ public class Player_ : MonoBehaviour
     }
     void Winning()
     {
+        Debug.Log("Wining");
     }
     void BeingCrushedbyDoor()
     {

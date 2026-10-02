@@ -78,4 +78,8 @@ public class Player_Movement : MonoBehaviour {
         Physics2D.queriesStartInColliders = true;
         return hit;
     }
+    void OggerEnter(Collider other)
+    {
+        
+    }
 }
