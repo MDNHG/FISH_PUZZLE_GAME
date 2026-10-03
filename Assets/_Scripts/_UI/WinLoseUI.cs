@@ -25,7 +25,7 @@ public class WinLoseUI : MonoBehaviour
     }
     void Winning()
     {
-        losingMenu.SetActive(true);
+        winningMenu.SetActive(true);
     }
     void Reset()
     {
