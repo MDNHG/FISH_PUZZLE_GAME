@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Player_Movement))]
 public class Player_Shoot : MonoBehaviour {
     private Grid MAIN_GRID;
-    [SerializeField] int MAX_AMMO;
+    [SerializeField] private int MAX_AMMO;
     [SerializeField] GameObject bullet_prefab;
     private int ammo_left;
     private int bullet_speed = 1;
@@ -39,5 +39,9 @@ public class Player_Shoot : MonoBehaviour {
     }
     void ChangeShootPosition(Vector2 direction) {
         shoot_direction = direction;
+    }
+    public void SetMaxAmmo(int m_ammo)
+    {
+        MAX_AMMO = m_ammo;
     }
 }

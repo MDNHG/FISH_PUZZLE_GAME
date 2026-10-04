@@ -349,29 +349,19 @@ Tilemap:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 105906611}
   m_Enabled: 1
-  m_Tiles:
-  - first: {x: -2, y: 1, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 0
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741827
+  m_Tiles: {}
   m_AnimatedTiles: {}
   m_TileAssetArray:
   - serializedVersion: 2
-    m_RefCount: 1
+    m_RefCount: 0
     m_Data: {fileID: 11400000, guid: ae4ca9ab235c8784a990cf894eb739f3, type: 2}
   m_TileSpriteArray:
   - serializedVersion: 2
-    m_RefCount: 1
+    m_RefCount: 0
     m_Data: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_TileMatrixArray:
   - serializedVersion: 2
-    m_RefCount: 1
+    m_RefCount: 0
     m_Data:
       e00: 1
       e01: 0
@@ -391,11 +381,11 @@ Tilemap:
       e33: 1
   m_TileColorArray:
   - serializedVersion: 2
-    m_RefCount: 1
+    m_RefCount: 0
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray:
   - serializedVersion: 2
-    m_RefCount: 1
+    m_RefCount: 0
     m_Data: {fileID: 9149196156401648399, guid: c74d7f207062cee4d96eec4a674e72ed, type: 3}
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1174,11 +1164,11 @@ PrefabInstance:
       objectReference: {fileID: 1111476134}
     - target: {fileID: 7997867308142710026, guid: 86eb45da71ac29741b6dea05a5f4f555, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.51
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7997867308142710026, guid: 86eb45da71ac29741b6dea05a5f4f555, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.46
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 7997867308142710026, guid: 86eb45da71ac29741b6dea05a5f4f555, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1227,11 +1217,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1997280104282067039, guid: fb8f7f23920677b4a91791715d84d5eb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.49
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 1997280104282067039, guid: fb8f7f23920677b4a91791715d84d5eb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.050292484
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1997280104282067039, guid: fb8f7f23920677b4a91791715d84d5eb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2337,7 +2327,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f0785ac3142b27488e80d5dbf3b2a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player_Shoot
-  MAIN_GRID: {fileID: 632078183}
   MAX_AMMO: 10
   bullet_prefab: {fileID: 4080193086715172661, guid: 5e5824ec231b27741a7b5d1863489eef, type: 3}
 --- !u!114 &1097097588
@@ -2352,7 +2341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c28016d830cac489db14c2b4bbd619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  MAIN_GRID: {fileID: 632078183}
+  moveSpeed: 10
 --- !u!4 &1097097589
 Transform:
   m_ObjectHideFlags: 0

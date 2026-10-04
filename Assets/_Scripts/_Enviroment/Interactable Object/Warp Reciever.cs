@@ -24,4 +24,8 @@ public class WarpReciever : MonoBehaviour
             Destroy(collider.gameObject);
         }
     }
+    public void SetRequiredEnergy(int e)
+    {
+        require_e = e;
+    }
 }
