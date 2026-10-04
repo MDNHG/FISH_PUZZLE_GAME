@@ -1,0 +1,68 @@
+using TMPro;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
+public class Menu_Scene : MonoBehaviour {
+    public string nextScene;
+    public TMP_Text[] menuOption;
+
+    // Defaults to the first index option
+    private int optionIndex = 0;
+    private int NO_OF_OPTIONS = 3; // Levels, Settings, Quit
+
+    void Start() {
+        // Defaults to selecting first option first
+        HighlightOption(optionIndex);
+    }
+
+    void Update() {
+        // Get the current keyboard. It is null if no keyboard is connected.
+        Keyboard keyboard = Keyboard.current;
+        if (keyboard == null)
+            return;
+
+        // Alternating between menu options
+        if (keyboard.downArrowKey.wasPressedThisFrame || keyboard.sKey.wasPressedThisFrame) {
+            optionIndex = (optionIndex + 1) % NO_OF_OPTIONS;
+            HighlightOption(optionIndex);
+        }
+        else if (keyboard.upArrowKey.wasPressedThisFrame || keyboard.wKey.wasPressedThisFrame) {
+            optionIndex = (optionIndex + (NO_OF_OPTIONS - 1)) % NO_OF_OPTIONS;
+            HighlightOption(optionIndex);
+        }
+
+        // Confirming option
+        if (keyboard.zKey.wasPressedThisFrame || keyboard.enterKey.wasPressedThisFrame) {
+            ChooseOption();
+        }
+    }
+
+    private void ChooseOption() {
+        // Levels
+        if (optionIndex == 0) {
+            if (!string.IsNullOrEmpty(nextScene))
+                SceneManager.LoadScene(nextScene);
+        }
+
+        // Quit; always the last option
+        if (optionIndex == NO_OF_OPTIONS - 1) {
+#if UNITY_EDITOR
+            EditorApplication.isPlaying = false; // Editor
+#endif
+            Application.Quit(); // Build
+        }
+    }
+
+    // Swaps options' color between highlighted (yellow) and normal (white)
+    private void HighlightOption(int index) {
+        for (int i = 0; i < NO_OF_OPTIONS; i++) {
+            var text = menuOption[i].GetComponentInChildren<TMP_Text>();
+            text.color = (i == index) ? Color.yellow : Color.white;
+        }
+    }
+}
