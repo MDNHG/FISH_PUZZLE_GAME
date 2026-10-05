@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using NUnit.Framework.Constraints;
+using System.Threading;
 
 public class WinLoseUI : MonoBehaviour
 {
@@ -15,7 +17,15 @@ public class WinLoseUI : MonoBehaviour
     {
         foreach(Button button in resetButton)
         {
-            button.onClick.AddListener(Reset);
+           button.onClick.AddListener(()=> Reset());
+        }
+         foreach(Button button in homeButton)
+        {
+           button.onClick.AddListener(()=> Home());
+        }
+          foreach(Button button in continueButton)
+        {
+           button.onClick.AddListener(()=> NextLevel());
         }
         Door.crushPlayer += Losing;
         Player_Movement.EnterWarpGate += Winning;
@@ -38,5 +48,15 @@ public class WinLoseUI : MonoBehaviour
     void Reset()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    void Home()
+    {
+        Debug.Log("Return");
+        SceneManager.LoadScene(1);
+    }
+    void NextLevel()
+    {
+        Debug.Log("Next");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
