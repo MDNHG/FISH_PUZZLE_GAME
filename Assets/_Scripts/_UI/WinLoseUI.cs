@@ -2,8 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using NUnit.Framework.Constraints;
-using System.Threading;
+using DG.Tweening;
 using UnityEngine.InputSystem;
 
 public class WinLoseUI : MonoBehaviour
@@ -31,12 +30,23 @@ public class WinLoseUI : MonoBehaviour
         {
            button.onClick.AddListener(()=> NextLevel());
         }
-        Door.crushPlayer += Losing;
-        Player_Movement.EnterWarpGate += Winning;
-        Laser.roastPlayer += Losing;
         losingMenu.SetActive(false);
         winningMenu.SetActive(false);
         pauseMenu.SetActive(false);
+    }
+    void OnEnable()
+    {
+        Door.crushPlayer += Losing;
+        Player_Movement.EnterWarpGate += Winning;
+        Laser.roastPlayer += Losing;
+        
+    }
+    void OnDisable()
+    {
+        Door.crushPlayer -= Losing;
+        Player_Movement.EnterWarpGate -= Winning;
+        Laser.roastPlayer -= Losing;
+        
     }
     void Update()
     {
@@ -62,6 +72,7 @@ public class WinLoseUI : MonoBehaviour
     }
     void Reset()
     {
+        DOTween.KillAll();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     void Home()
