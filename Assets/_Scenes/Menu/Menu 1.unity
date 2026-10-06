@@ -639,7 +639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a8d35d35da090545a5f926cc1555ccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuNumber_LoadLevel
-  level: 
+  level: Level9
 --- !u!1 &307684144
 GameObject:
   m_ObjectHideFlags: 0
@@ -1867,7 +1867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a8d35d35da090545a5f926cc1555ccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuNumber_LoadLevel
-  level: 
+  level: Level8
 --- !u!1 &1387343336
 GameObject:
   m_ObjectHideFlags: 0
@@ -3157,7 +3157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a8d35d35da090545a5f926cc1555ccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuNumber_LoadLevel
-  level: 
+  level: Level7
 --- !u!1 &1799232656
 GameObject:
   m_ObjectHideFlags: 0
@@ -3761,7 +3761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a8d35d35da090545a5f926cc1555ccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuNumber_LoadLevel
-  level: 
+  level: Level10
 --- !u!1 &2018832107
 GameObject:
   m_ObjectHideFlags: 0
