@@ -39,8 +39,8 @@ public class Door : MonoBehaviour
     }
     private void Deactivate()
     {    
-    CheckOverlap();
-    col.enabled = true;
+        CheckOverlap();
+        col.enabled = true;
         default_cl.a = 1;
         spt.color = default_cl;
     }
