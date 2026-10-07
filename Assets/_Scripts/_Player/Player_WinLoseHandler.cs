@@ -24,7 +24,6 @@ public class Player_ : MonoBehaviour
     void BeingCrushedbyDoor()
     {
         Debug.Log("Get crushed");
-        Destroy(gameObject);
     }
     void BeingRoastedbyLaser()
     {

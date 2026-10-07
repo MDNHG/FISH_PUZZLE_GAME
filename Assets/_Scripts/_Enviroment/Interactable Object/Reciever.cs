@@ -3,7 +3,7 @@ using UnityEngine;
 public class Reciever : MonoBehaviour
 {
     [SerializeField] GameObject Door;
-    private int cur_e;
+    private int e_supply = 10;
     void Start()
     {   
     }
@@ -14,7 +14,7 @@ public class Reciever : MonoBehaviour
     {
         if(collider.gameObject.GetComponent<Bullet>() is Bullet bullet)
         {
-            Door.GetComponent<Door>().ChangeTick(10);
+            Door.GetComponent<Door>().ChangeTick(e_supply);
             Destroy(collider.gameObject);
         }
     }
