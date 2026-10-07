@@ -62,8 +62,8 @@ public class Rotator : MonoBehaviour,IPushable
     {
         return input switch
         {
-            Input.UP => new Vector2(0, -1),
-            Input.DOWN  => new Vector2(0, 1),
+            Input.UP => new Vector2(0, 1),
+            Input.DOWN  => new Vector2(0, -1),
             Input.LEFT  => new Vector2(-1, 0),
             Input.RIGHT => new Vector2(1, 0),
             _  =>  Vector2.zero 
@@ -73,8 +73,8 @@ public class Rotator : MonoBehaviour,IPushable
     {
     return input switch
         {
-            Input.UP => 0,
-            Input.DOWN  => 180,
+            Input.UP => 180,
+            Input.DOWN  => 0,
             Input.LEFT  => -90,
             Input.RIGHT => 90,
             _  =>  0 
