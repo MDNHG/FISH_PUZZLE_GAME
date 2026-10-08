@@ -9,7 +9,7 @@ public class Menu_LoadLevel : MonoBehaviour {
 
     // Defaults to the first index option
     private int optionIndex = 0;
-    private int NO_OF_OPTIONS = 20;
+    private int NO_OF_OPTIONS = 21; // 20 levels + back button
 
     void Start() {
         // Defaults to selecting first option first
@@ -32,7 +32,7 @@ public class Menu_LoadLevel : MonoBehaviour {
             HighlightOption(optionIndex);
         }
         else if (keyboard.leftArrowKey.wasPressedThisFrame || keyboard.aKey.wasPressedThisFrame) {
-            optionIndex = (optionIndex - 1) % NO_OF_OPTIONS;
+            optionIndex = (optionIndex + NO_OF_OPTIONS - 1) % NO_OF_OPTIONS;
             HighlightOption(optionIndex);
         }
         else if (keyboard.rightArrowKey.wasPressedThisFrame || keyboard.dKey.wasPressedThisFrame) {

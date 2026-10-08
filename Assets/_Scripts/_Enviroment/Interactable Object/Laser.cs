@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
-    public static event Action roastPlayer;
+    public static event Action killPlayer;
     enum Direction
     {
         UP,
@@ -24,10 +24,9 @@ public class Laser : MonoBehaviour
         Player_Movement.Move += DecreaseTick;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(tick_left == 0)
+        if(tick_left <= 0)
         {
             FireLaser();
             tick_left = tick_cap;
@@ -40,7 +39,6 @@ public class Laser : MonoBehaviour
     }
     void FireLaser()
     {
-        Debug.Log("Fire");
         StartCoroutine(FireLaserForSecond(laser_duration));
         
     }
@@ -66,9 +64,9 @@ public class Laser : MonoBehaviour
             Debug.DrawRay(gameObject.transform.position, shoot_direction, Color.white, second);
             if(hit.collider.gameObject.GetComponent<Player_Movement>() != null)
             {
-                roastPlayer?.Invoke();
+                killPlayer?.Invoke();
             }
-            timer+=1*Time.deltaTime;
+            timer += Time.deltaTime;
             yield return null;
         }
         is_firing = false;

@@ -10,9 +10,6 @@ public class Player_Shoot : MonoBehaviour {
     Player_Input pI;
     Vector2 shoot_direction;
 
-    void Awake() {
-
-    }
     void Start() {
         pI = GetComponent<Player_Movement>().pI;
         MAIN_GRID = FindAnyObjectByType<Grid>();
