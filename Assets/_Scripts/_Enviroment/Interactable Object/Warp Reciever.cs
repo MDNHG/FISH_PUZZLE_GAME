@@ -6,9 +6,7 @@ public class WarpReciever : MonoBehaviour
     [SerializeField] private int cur_e = 0;
     [SerializeField] private int require_e;
     [SerializeField] private WarpGate warp_gate;
-    void Start()
-    {   
-    }
+
     void Update()
     {
         if(cur_e >= require_e)

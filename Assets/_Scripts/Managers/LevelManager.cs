@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     int levelID;
-
     Player_Shoot playerShoot;
     WarpReciever warpReceiver;
 
@@ -14,18 +13,6 @@ public class LevelManager : MonoBehaviour
         playerShoot = FindAnyObjectByType<Player_Shoot>();
         warpReceiver = FindAnyObjectByType<WarpReciever>();
         LoadLevelData();
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void LoadLevelData()

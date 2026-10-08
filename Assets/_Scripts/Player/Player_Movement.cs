@@ -28,7 +28,6 @@ public class Player_Movement : MonoBehaviour {
     }
     void Start()
     {
-
         MAIN_GRID = FindAnyObjectByType<Grid>();
         MoveDistance = MAIN_GRID.cellSize.x;
         gameObject.transform.position =  MAIN_GRID.GetCellCenterWorld(GetCellPosition(gameObject));
@@ -59,7 +58,7 @@ public class Player_Movement : MonoBehaviour {
     void ChangeGridPosition(Vector2 direction, GameObject push_object = null) {
         Vector3Int playerPos = GetCellPosition(gameObject);
         Vector3 targetPos = MAIN_GRID.GetCellCenterWorld(playerPos + new Vector3Int((int)direction.x, (int)direction.y, 0));
-        gameObject.transform.DOMove(targetPos,1f/moveSpeed);
+        gameObject.transform.DOMove(targetPos,1f/moveSpeed).OnComplete(() => Move?.Invoke());
         Move?.Invoke(); // Dem tick khi nguoi coi di chuyen
         if (push_object != null) {
             Vector3Int objPos = GetCellPosition(push_object);

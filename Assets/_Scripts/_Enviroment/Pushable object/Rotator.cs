@@ -21,7 +21,6 @@ public class Rotator : MonoBehaviour,IPushable
     [SerializeField] GameObject input_indicator, output_indicator;
     [SerializeField] Direction turn_direction; 
     [SerializeField] Input input_direction;
-    private float turn_angle = 90;
     void Start()
     {
         //Tat ca se chuyen sang script rieng khi co visual
@@ -34,14 +33,11 @@ public class Rotator : MonoBehaviour,IPushable
         }
         else
         {
-            
             output_indicator.transform.localPosition = new Vector3(2,2,0);
             output_indicator.transform.localEulerAngles = new Vector3(0,0,-90);
         }
     }
-    void Update()
-    {
-    }
+
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.GetComponent<Bullet>() != null)
@@ -50,7 +46,7 @@ public class Rotator : MonoBehaviour,IPushable
                 if(Vector2.Dot(ToVector2(input_direction), rb.linearVelocity.normalized) == -1)
                 {
                     rb.gameObject.transform.position = gameObject.transform.position;
-                    rb.linearVelocity = Quaternion.Euler(0,0,(int)turn_direction*turn_angle)*rb.linearVelocity;   
+                    rb.linearVelocity = Quaternion.Euler(0,0,(int)turn_direction * 90) * rb.linearVelocity;   
                 }
                 else
                 {
