@@ -4201,7 +4201,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3468138920116723455, guid: cac4a67cc8e553b498ea11d505ef8d9a, type: 3}
       propertyPath: turn_direction
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3719219819282442066, guid: cac4a67cc8e553b498ea11d505ef8d9a, type: 3}
       propertyPath: m_Name
@@ -4327,5 +4327,5 @@ SceneRoots:
   - {fileID: 632078184}
   - {fileID: 1293692787}
   - {fileID: 734103643}
-  - {fileID: 1880943269}
   - {fileID: 1809898861}
+  - {fileID: 1880943269}
