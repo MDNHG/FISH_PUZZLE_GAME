@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1536291634756586601}
   - component: {fileID: 5985803106445845256}
-  - component: {fileID: 756016669196148037}
   - component: {fileID: 7942224858918582145}
+  - component: {fileID: 899422805585244169}
   m_Layer: 6
   m_Name: Amplifier
   m_TagString: Untagged
@@ -83,8 +83,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 0.15710779, b: 0.51572317, a: 1}
+  m_Sprite: {fileID: -1842813208, guid: 422e09c268d68b743805f9b623e8484d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -94,7 +94,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
---- !u!61 &756016669196148037
+--- !u!114 &7942224858918582145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2808979895728725522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ea3c1da99588e24bb5c9c6463ac3944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Amplifier
+--- !u!61 &899422805585244169
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,17 +150,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.5, y: 0.5}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7942224858918582145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2808979895728725522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ea3c1da99588e24bb5c9c6463ac3944, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Amplifier
