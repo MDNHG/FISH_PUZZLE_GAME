@@ -8,67 +8,22 @@ public class Rotator : MonoBehaviour,IPushable
 {
     enum Direction
     {
-        UP,
-        DOWN,
-        RIGHT,
-        LEFT,
+        RIGHT = -1,
+        LEFT = 1,
     }
     enum Input
     {
-        UP,
-        DOWN,
-        RIGHT,
-        LEFT,
+        UP = 1,
+        DOWN = 3,
+        RIGHT = 2,
+        LEFT = 0,
     }
     [SerializeField] Direction turn_direction; 
     [SerializeField] Input input_direction;
 
-    [SerializeField] SpriteRenderer spriteRenderer;
-
     void Start() {
-        if (spriteRenderer == null)
-            spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        UpdateSpriteRotation();
+       
     }
-
-    void UpdateSpriteRotation() {
-        float rot = 0f;
-        if (input_direction == Input.UP) {
-            if (turn_direction == Direction.LEFT) {
-                rot = 0f;
-            }
-            else if (turn_direction == Direction.RIGHT) {
-                rot = -90f;
-            }
-        }
-        else if (input_direction == Input.DOWN) {
-            if (turn_direction == Direction.LEFT) {
-                rot = 90f;
-            }
-            else if (turn_direction == Direction.RIGHT) {
-                rot = 180f;
-            }
-        }
-        else if (input_direction == Input.RIGHT) {
-            if (turn_direction == Direction.UP) {
-                rot = -90f;
-            }
-            else if (turn_direction == Direction.DOWN) {
-                rot = 180f;
-            }
-        }
-        else if (input_direction == Input.LEFT) {
-            if (turn_direction == Direction.UP) {
-                rot = 0f;
-            }
-            else if (turn_direction == Direction.DOWN) {
-                rot = 90f;
-            }
-        }
-        spriteRenderer.transform.localEulerAngles =
-            new Vector3(0, 0, rot);
-    }
-
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.GetComponent<Bullet>() != null)
@@ -95,5 +50,13 @@ public class Rotator : MonoBehaviour,IPushable
             Input.RIGHT => new Vector2(1, 0),
             _  =>  Vector2.zero 
         };
+    }
+    public Vector3 GetTurnDirection()
+    {
+        return new Vector3(1,1*(int)turn_direction,1);
+    }
+    public Vector3 GetInputDirection()
+    {
+        return new Vector3(0,0,-90*(int)input_direction);
     }
 }

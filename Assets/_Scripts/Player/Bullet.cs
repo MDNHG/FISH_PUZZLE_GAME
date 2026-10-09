@@ -1,4 +1,5 @@
 using UnityEngine;
+using DG.Tweening;
 
 public class Bullet : MonoBehaviour 
 {
@@ -10,7 +11,8 @@ public class Bullet : MonoBehaviour
     public void IncreaseEValue(int amount) // Use for Amplifer
     {
         e_value += amount;
-        gameObject.transform.localScale *= 2;
+        Vector3 cur_scale = gameObject.transform.localScale;
+        gameObject.transform.DOScale(cur_scale*2, 0.1f);
     }
     private void OnTriggerEnter2D(Collider2D colldier)
     {
