@@ -1070,6 +1070,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3468138920116723455, guid: cac4a67cc8e553b498ea11d505ef8d9a, type: 3}
       propertyPath: turn_direction
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3468138920116723455, guid: cac4a67cc8e553b498ea11d505ef8d9a, type: 3}
+      propertyPath: input_direction
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3468138920116723455, guid: cac4a67cc8e553b498ea11d505ef8d9a, type: 3}
