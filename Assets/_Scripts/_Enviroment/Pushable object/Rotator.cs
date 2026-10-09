@@ -8,8 +8,10 @@ public class Rotator : MonoBehaviour,IPushable
 {
     enum Direction
     {
-        LEFT = 1,
-        RIGHT = -1,
+        UP,
+        DOWN,
+        RIGHT,
+        LEFT,
     }
     enum Input
     {
@@ -18,24 +20,53 @@ public class Rotator : MonoBehaviour,IPushable
         RIGHT,
         LEFT,
     }
-    [SerializeField] GameObject input_indicator, output_indicator;
     [SerializeField] Direction turn_direction; 
     [SerializeField] Input input_direction;
-    void Start()
-    {
-        //Tat ca se chuyen sang script rieng khi co visual
-        input_indicator.transform.localPosition = ToVector2(input_direction);
-        input_indicator.transform.eulerAngles = new Vector3(0,0,ToAngle(input_direction));
-        if(turn_direction == Direction.LEFT)
-        {
-            output_indicator.transform.localPosition = new Vector3(-2,2,0);
-            output_indicator.transform.localEulerAngles = new Vector3(0,0,90);
+
+    [SerializeField] SpriteRenderer spriteRenderer;
+
+    void Start() {
+        if (spriteRenderer == null)
+            spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        UpdateSpriteRotation();
+    }
+
+    void UpdateSpriteRotation() {
+        float rot = 0f;
+        if (input_direction == Input.UP) {
+            if (turn_direction == Direction.LEFT) {
+                rot = 0f;
+            }
+            else if (turn_direction == Direction.RIGHT) {
+                rot = -90f;
+            }
         }
-        else
-        {
-            output_indicator.transform.localPosition = new Vector3(2,2,0);
-            output_indicator.transform.localEulerAngles = new Vector3(0,0,-90);
+        else if (input_direction == Input.DOWN) {
+            if (turn_direction == Direction.LEFT) {
+                rot = 90f;
+            }
+            else if (turn_direction == Direction.RIGHT) {
+                rot = 180f;
+            }
         }
+        else if (input_direction == Input.RIGHT) {
+            if (turn_direction == Direction.UP) {
+                rot = -90f;
+            }
+            else if (turn_direction == Direction.DOWN) {
+                rot = 180f;
+            }
+        }
+        else if (input_direction == Input.LEFT) {
+            if (turn_direction == Direction.UP) {
+                rot = 0f;
+            }
+            else if (turn_direction == Direction.DOWN) {
+                rot = 90f;
+            }
+        }
+        spriteRenderer.transform.localEulerAngles =
+            new Vector3(0, 0, rot);
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -63,17 +94,6 @@ public class Rotator : MonoBehaviour,IPushable
             Input.LEFT  => new Vector2(-1, 0),
             Input.RIGHT => new Vector2(1, 0),
             _  =>  Vector2.zero 
-        };
-    }
-    private float ToAngle(Input input) // Code tam thoi de handle visual cua input ouput
-    {
-    return input switch
-        {
-            Input.UP => 180,
-            Input.DOWN  => 0,
-            Input.LEFT  => -90,
-            Input.RIGHT => 90,
-            _  =>  0 
         };
     }
 }
