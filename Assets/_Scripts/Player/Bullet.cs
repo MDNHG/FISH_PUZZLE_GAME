@@ -1,9 +1,11 @@
 using UnityEngine;
 using DG.Tweening;
+using Unity.Mathematics;
 
 public class Bullet : MonoBehaviour 
 {
     [SerializeField] private int e_value = 1;
+    [SerializeField] ParticleSystem burst; 
     public int GetEValue() // Use for Reciever
     {
         return e_value;
@@ -21,5 +23,9 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    private void OnDestroy()
+    {
+        Instantiate(burst, gameObject.transform.position, quaternion.identity);
     }
 }

@@ -6,28 +6,28 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Scripts/_Enviroment/_Scenes/Menu/Menu 0.unity
+    path: Assets/_Scenes/Menu/Menu 0.unity
     guid: 33efdffda3dd2014b917cb2d7cc4fa61
   - enabled: 1
-    path: Assets/_Scripts/_Enviroment/_Scenes/Menu/Menu 1.unity
+    path: Assets/_Scenes/Menu/Menu 1.unity
     guid: 1312d082670c82c48a580d64b8a8141a
   - enabled: 1
-    path: Assets/_Scripts/_Enviroment/_Scenes/Levels/Level5.unity
+    path: Assets/_Scenes/Levels/Levels/Level5.unity
     guid: 2b3335385c9c5d244b20c7177a5daa1b
   - enabled: 1
-    path: Assets/_Scripts/_Enviroment/_Scenes/Levels/Level6.unity
+    path: Assets/_Scenes/Levels/Level6.unity
     guid: e014d4100d4d7454fb768b28ce2a53df
   - enabled: 1
-    path: Assets/_Scripts/_Enviroment/_Scenes/Levels/Level7.unity
+    path: Assets/_Scenes/Levels/Levels/Level7.unity
     guid: 9f1f23a01e5b75449879fbedb681427a
   - enabled: 1
-    path: Assets/_Scripts/_Enviroment/_Scenes/Levels/Level8.unity
+    path: Assets/_Scenes/Levels/Level8.unity
     guid: f9aa9e033464d764290d456febd4a122
   - enabled: 1
-    path: Assets/_Scripts/_Enviroment/_Scenes/Levels/Level9.unity
+    path: Assets/_Scenes/Levels/Level9.unity
     guid: 1549e052e9efbdc4fb6b774a80781bfc
   - enabled: 1
-    path: Assets/_Scripts/_Enviroment/_Scenes/Levels/Level10.unity
+    path: Assets/_Scenes/Levels/Level10.unity
     guid: 34dfabd1db5def942825798110ef7079
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

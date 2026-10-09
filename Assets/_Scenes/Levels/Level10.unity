@@ -1010,8 +1010,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3468138920116723455, guid: cac4a67cc8e553b498ea11d505ef8d9a, type: 3}
-      propertyPath: input_direction
+      propertyPath: turn_direction
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3468138920116723455, guid: cac4a67cc8e553b498ea11d505ef8d9a, type: 3}
+      propertyPath: input_direction
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3719219819282442066, guid: cac4a67cc8e553b498ea11d505ef8d9a, type: 3}
       propertyPath: m_Name
@@ -2341,7 +2345,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3468138920116723455, guid: cac4a67cc8e553b498ea11d505ef8d9a, type: 3}
       propertyPath: input_direction
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3719219819282442066, guid: cac4a67cc8e553b498ea11d505ef8d9a, type: 3}
       propertyPath: m_Name
@@ -3898,6 +3902,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 665073255807015424, guid: cac4a67cc8e553b498ea11d505ef8d9a, type: 3}
+      propertyPath: m_Parameters.m_EndRange
+      value: 1.2722279
+      objectReference: {fileID: 0}
+    - target: {fileID: 3468138920116723455, guid: cac4a67cc8e553b498ea11d505ef8d9a, type: 3}
+      propertyPath: turn_direction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3719219819282442066, guid: cac4a67cc8e553b498ea11d505ef8d9a, type: 3}
       propertyPath: m_Name
       value: Rotator2
