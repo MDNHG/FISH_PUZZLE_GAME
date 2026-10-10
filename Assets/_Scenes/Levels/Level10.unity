@@ -940,10 +940,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 221270735}
     m_Modifications:
-    - target: {fileID: 3468138920116723455, guid: cac4a67cc8e553b498ea11d505ef8d9a, type: 3}
-      propertyPath: turn_direction
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3719219819282442066, guid: cac4a67cc8e553b498ea11d505ef8d9a, type: 3}
       propertyPath: m_Name
       value: Rotator4
@@ -1068,14 +1064,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 221270735}
     m_Modifications:
-    - target: {fileID: 3468138920116723455, guid: cac4a67cc8e553b498ea11d505ef8d9a, type: 3}
-      propertyPath: turn_direction
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3468138920116723455, guid: cac4a67cc8e553b498ea11d505ef8d9a, type: 3}
-      propertyPath: input_direction
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3719219819282442066, guid: cac4a67cc8e553b498ea11d505ef8d9a, type: 3}
       propertyPath: m_Name
       value: Rotator
@@ -2408,14 +2396,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 221270735}
     m_Modifications:
-    - target: {fileID: 3468138920116723455, guid: cac4a67cc8e553b498ea11d505ef8d9a, type: 3}
-      propertyPath: turn_direction
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3468138920116723455, guid: cac4a67cc8e553b498ea11d505ef8d9a, type: 3}
-      propertyPath: input_direction
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 3719219819282442066, guid: cac4a67cc8e553b498ea11d505ef8d9a, type: 3}
       propertyPath: m_Name
       value: Rotator3
@@ -2562,10 +2542,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4509889977198139411, guid: 307c834b2f2668f4bb4edf76e443ef3f, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 8790355234346146786}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3976,14 +3952,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 221270735}
     m_Modifications:
-    - target: {fileID: 665073255807015424, guid: cac4a67cc8e553b498ea11d505ef8d9a, type: 3}
-      propertyPath: m_Parameters.m_EndRange
-      value: 1.2722279
-      objectReference: {fileID: 0}
-    - target: {fileID: 3468138920116723455, guid: cac4a67cc8e553b498ea11d505ef8d9a, type: 3}
-      propertyPath: turn_direction
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3719219819282442066, guid: cac4a67cc8e553b498ea11d505ef8d9a, type: 3}
       propertyPath: m_Name
       value: Rotator2
@@ -4095,11 +4063,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f2f5670c0863a54383f0e4fe5d18eb5, type: 3}
---- !u!20 &8790355234346146786 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 7834394574650387450, guid: 5f2f5670c0863a54383f0e4fe5d18eb5, type: 3}
-  m_PrefabInstance: {fileID: 8790355234346146785}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

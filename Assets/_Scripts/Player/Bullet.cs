@@ -4,8 +4,9 @@ using Unity.Mathematics;
 
 public class Bullet : MonoBehaviour 
 {
+    
     [SerializeField] private int e_value = 1;
-    [SerializeField] ParticleSystem burst; 
+    [SerializeField] ParticleSystem burst_particle; 
     public int GetEValue() // Use for Reciever
     {
         return e_value;
@@ -26,6 +27,6 @@ public class Bullet : MonoBehaviour
     }
     private void OnDestroy()
     {
-        Instantiate(burst, gameObject.transform.position, quaternion.identity);
+        Instantiate(burst_particle, gameObject.transform.position, quaternion.identity);
     }
 }
