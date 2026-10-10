@@ -5589,9 +5589,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0459fdb0997cb64da28c93f03fc284c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Amplifier_VS
-  idle: {fileID: 2186338475110695462}
-  charge_up: {fileID: 2821146820682118877}
-  burst: {fileID: 6006814246232365798}
+  idle_particle: {fileID: 2186338475110695462}
+  charge_up_particle: {fileID: 2821146820682118877}
+  burst_particle: {fileID: 6006814246232365798}
 --- !u!1 &5548785452554813008
 GameObject:
   m_ObjectHideFlags: 0
