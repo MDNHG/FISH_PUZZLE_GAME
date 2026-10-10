@@ -4989,8 +4989,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab6d7d82b2b367640ad8f416750a5f25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rotator
-  turn_direction: 0
-  input_direction: 1
+  turn_direction: 1
+  input_direction: 0
 --- !u!1 &4854037559511847286
 GameObject:
   m_ObjectHideFlags: 0

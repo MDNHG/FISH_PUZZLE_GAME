@@ -9,7 +9,7 @@ public class Reciever : MonoBehaviour
     {
         if(collider.gameObject.GetComponent<Bullet>() is Bullet bullet)
         {
-            Door.GetComponent<Door>().AddTick(e_supply);
+            Door.GetComponent<Door>().ChangeTick(e_supply);
             Destroy(collider.gameObject);
         }
     }

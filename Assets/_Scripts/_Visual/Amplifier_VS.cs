@@ -3,21 +3,21 @@ using UnityEngine;
 [RequireComponent(typeof(Amplifier))]
 public class Amplifier_VS : MonoBehaviour
 {
-    [SerializeField] ParticleSystem idle;
-    [SerializeField] ParticleSystem charge_up;
-    [SerializeField] ParticleSystem burst;
+    [SerializeField] ParticleSystem idle_particle;
+    [SerializeField] ParticleSystem charge_up_particle;
+    [SerializeField] ParticleSystem burst_particle;
     private Amplifier amplifier;
     void Awake()
     {
         amplifier = gameObject.GetComponent<Amplifier>();
         amplifier.charge += playChargeParticle;
-        amplifier.burst +=playBurstParticle;
+        amplifier.burst +=playburst_particleParticle;
     }
     void Start()
     {
-        idle.Play();
-        charge_up.Stop();
-        burst.Stop();
+        idle_particle.Play();
+        charge_up_particle.Stop();
+        burst_particle.Stop();
         
        
     }
@@ -27,17 +27,17 @@ public class Amplifier_VS : MonoBehaviour
     }
     public void playChargeParticle(bool state)
     {
-        if(state && !charge_up.isPlaying)
+        if(state && !charge_up_particle.isPlaying)
         {
-            charge_up.Play();
+            charge_up_particle.Play();
         }
-        else if (!state &&charge_up.isPlaying)
+        else if (!state &&charge_up_particle.isPlaying)
         {
-            charge_up.Stop();
+            charge_up_particle.Stop();
         }
     }
-    public void playBurstParticle()
+    public void playburst_particleParticle()
     {
-        burst.Play();
+        burst_particle.Play();
     }
 }

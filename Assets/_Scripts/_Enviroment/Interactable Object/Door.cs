@@ -22,11 +22,11 @@ public class Door : MonoBehaviour
 
     void Update()
     {
-        if (tick_left > 0 && col.enabled == true)
+        if(tick_left > 0 && col.enabled == true)
         {
             Activate();
         }
-        else if (tick_left <= 0 && col.enabled == false)
+        else if(tick_left == 0 && col.enabled == false)
         {
             Deactivate();
         }
@@ -39,21 +39,23 @@ public class Door : MonoBehaviour
     }
     private void Deactivate()
     {    
-        CheckOverlap();
-        col.enabled = true;
+     CheckOverlap();
+    col.enabled = true;
         default_cl.a = 1;
         spt.color = default_cl;
     }
     
-    public void AddTick(int amount)
+    public void ChangeTick(int amount)
     {
         tick_left += amount;
+        Debug.Log(tick_left);
     }
     private void DecreaseTickOnPlayerMove()
     {
         if(tick_left > 0)
         {
-            tick_left--;
+        tick_left--;
+        Debug.Log(tick_left);
         }
     }
     private void CheckOverlap()
@@ -65,5 +67,10 @@ public class Door : MonoBehaviour
         {
             killPlayer?.Invoke();
         }
-    }    
+    }
+    public int GetTickLeft()
+    {
+        return tick_left;
+    }
+    
 }
