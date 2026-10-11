@@ -83,8 +83,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.9364375, a: 1}
+  m_Sprite: {fileID: -1857560672, guid: 422e09c268d68b743805f9b623e8484d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -152,5 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63171c5162f7e04409cbddb8aaaeacbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WarpReciever
+  cur_e: 0
   require_e: 0
   warp_gate: {fileID: 0}
+  open: {fileID: 763961796, guid: 422e09c268d68b743805f9b623e8484d, type: 3}
