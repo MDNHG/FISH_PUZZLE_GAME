@@ -7,11 +7,14 @@ public class WarpReciever : MonoBehaviour
     [SerializeField] private int require_e;
     [SerializeField] private WarpGate warp_gate;
 
+    [SerializeField] private Sprite open;
+
     void Update()
     {
         if(cur_e >= require_e)
         {
             warp_gate.Activate();
+            this.GetComponent<SpriteRenderer>().sprite = open;
         }
     }
     void OnTriggerEnter2D(Collider2D collider)
