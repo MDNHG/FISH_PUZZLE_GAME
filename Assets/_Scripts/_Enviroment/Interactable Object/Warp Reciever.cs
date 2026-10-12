@@ -1,8 +1,10 @@
 using System;
+using System.Reflection.Metadata.Ecma335;
 using UnityEngine;
 
 public class WarpReciever : MonoBehaviour
 {
+    public event Action<float> IncreaseCurrentEnergy;
     [SerializeField] private int cur_e = 0;
     [SerializeField] private int require_e;
     [SerializeField] private WarpGate warp_gate;
@@ -22,11 +24,20 @@ public class WarpReciever : MonoBehaviour
         if(collider.gameObject.GetComponent<Bullet>() is Bullet bullet)
         {
             cur_e += bullet.GetEValue();
+            IncreaseCurrentEnergy?.Invoke(cur_e);
             Destroy(collider.gameObject);
         }
     }
     public void SetRequiredEnergy(int e)
     {
         require_e = e;
+    }
+    public int GetCurrentEnergy()
+    { 
+        return cur_e;
+    }
+    public int GetRequiredEnergy()
+    { 
+        return require_e;
     }
 }
