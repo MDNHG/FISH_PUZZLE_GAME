@@ -10,7 +10,7 @@ public class Player_Shoot : MonoBehaviour {
     [SerializeField] private int MAX_AMMO;
     [SerializeField] GameObject bullet_prefab;
     private int ammo_left;
-    private int bullet_speed = 0;
+    private int bullet_speed = 1;
     Player_Input pI;
     Vector2 shoot_direction;
 
