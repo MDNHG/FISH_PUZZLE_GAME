@@ -9,7 +9,8 @@ public class Door : MonoBehaviour
     int tick_left = 0;
     private SpriteRenderer spt;
     private BoxCollider2D col;
-    Color default_cl = Color.white;
+    public Sprite door_open;
+    public Sprite door_closed;
 
 
     void Start()
@@ -17,7 +18,7 @@ public class Door : MonoBehaviour
         Player_Movement.Move += DecreaseTickOnPlayerMove;
         col = gameObject.GetComponent<BoxCollider2D>();
         spt = gameObject.GetComponent<SpriteRenderer>();        
-        default_cl = spt.color; // Se tach ra mot script visual rieng
+        Deactivate();
     }
 
     void Update()
@@ -34,15 +35,13 @@ public class Door : MonoBehaviour
     private void Activate()
     {
         col.enabled = false;
-        default_cl.a = 0.5f; 
-        spt.color = default_cl;
+        spt.sprite = door_open;
     }
     private void Deactivate()
     {    
-     CheckOverlap();
-    col.enabled = true;
-        default_cl.a = 1;
-        spt.color = default_cl;
+        CheckOverlap();
+        col.enabled = true;
+        spt.sprite = door_closed;
     }
     
     public void ChangeTick(int amount)

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1670086417436803070}
   - component: {fileID: 9193721048043704513}
   m_Layer: 0
-  m_Name: Door
+  m_Name: Hori_Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.5, y: 1, z: 0}
-  m_LocalScale: {x: 0.5, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -82,10 +82,10 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 11
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.479708, g: 0.9245283, b: 0.6181178, a: 1}
+  m_Sprite: {fileID: 1348826903, guid: 422e09c268d68b743805f9b623e8484d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -132,14 +132,14 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0.3018868}
+    oldSize: {x: 2, y: 1.65625}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
 --- !u!50 &1670086417436803070
 Rigidbody2D:
@@ -180,3 +180,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 086fa2e6074c3a847ac6f315fa42021d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Door
+  door_open: {fileID: -24807065, guid: 422e09c268d68b743805f9b623e8484d, type: 3}
+  door_closed: {fileID: 1348826903, guid: 422e09c268d68b743805f9b623e8484d, type: 3}
