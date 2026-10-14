@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -7,7 +8,7 @@ public class Player_Movement : MonoBehaviour {
 
     Grid MAIN_GRID;
     public static event Action Move; // Dung de dem tick khi nguoi choi di chuyen
-    public static event Action EnterWarpGate; // Dùng để gọi những hàm xử lí winning.
+    public static event Action<Vector2> EnterWarpGate; // Dùng để gọi những hàm xử lí winning.
     public Player_Input pI {
         get; private set;
     }
@@ -42,9 +43,9 @@ public class Player_Movement : MonoBehaviour {
                 Physics2D.queriesStartInColliders = true;
                 if(hit.collider != null && hit.collider.GetComponent<WarpGate>() != null)
                 {
-                    EnterWarpGate?.Invoke();
+                    EnterWarpGate?.Invoke(moveDir);
                 }
-                if (hit.collider != null && hit.collider.GetComponent<IPushable>() != null && !IsObjectBlocked(hit.collider.gameObject, moveDir)) {
+                else if (hit.collider != null && hit.collider.GetComponent<IPushable>() != null && !IsObjectBlocked(hit.collider.gameObject, moveDir)) {
                     ChangeGridPosition(moveDir, hit.collider.gameObject);
                 }
                 else if (hit.collider == null || hit.collider.GetComponent<IPushable>() == null) // Tranh viec raycast hit voi vien dan

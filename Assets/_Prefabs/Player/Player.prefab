@@ -206,6 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a116e5e3782743419a52b2e8e580526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player_
+  burst: {fileID: 8012375871019958925, guid: ed35503f2f46e9f4da8455b93713000d, type: 3}
 --- !u!61 &5968804023222079808
 BoxCollider2D:
   m_ObjectHideFlags: 0
