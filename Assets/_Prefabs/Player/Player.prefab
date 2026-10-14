@@ -49,7 +49,6 @@ MonoBehaviour:
   front: {fileID: -7418427539470376931, guid: 35c076421b922044cb199a683ffd00c6, type: 3}
   back: {fileID: -5569589401503721355, guid: 1108be9eb6009ad4899f19fbf45d2b37, type: 3}
   side: {fileID: -5090686962649603202, guid: 2011f48124a489b47b47506626d9fc3c, type: 3}
-  animator: {fileID: 3481978387626223789}
 --- !u!212 &6252120215860146809
 SpriteRenderer:
   serializedVersion: 3
