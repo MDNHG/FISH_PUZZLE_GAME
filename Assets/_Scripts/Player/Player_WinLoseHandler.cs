@@ -7,7 +7,8 @@ public class Player_WinLoseHandler : MonoBehaviour
 {
     public static event Action Show_Win_Menu;
     private GameObject player;
-    [SerializeField] private ParticleSystem burst;
+    [SerializeField] private ParticleSystem win_burst;
+    [SerializeField] private ParticleSystem die_burst;
 
     void Awake() {
         player = gameObject;
@@ -31,8 +32,8 @@ public class Player_WinLoseHandler : MonoBehaviour
     }
 
     public void Die() {
+        Instantiate(die_burst, gameObject.transform.position, Quaternion.identity);
         Destroy(player);
-        // Nếu muốn anim cho từng kiểu chết thì để 1 param ở hàm này, rồi so sánh if với 1 string anim prefab theo tên
     }
     public void Win(Vector2 dir)
     {
@@ -44,7 +45,7 @@ public class Player_WinLoseHandler : MonoBehaviour
         enter.OnComplete(()=>
         {
             Destroy(player);
-            Instantiate(burst, gameObject.transform.position, Quaternion.identity);
+            Instantiate(win_burst, gameObject.transform.position, Quaternion.identity);
             Show_Win_Menu?.Invoke();  
         }
         );

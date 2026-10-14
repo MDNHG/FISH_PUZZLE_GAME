@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,11 +10,12 @@ public class Index_bar_UI : MonoBehaviour
     WarpReciever warpReciever;
     Player_Shoot playerShoot;
     [SerializeField] Image WG_capacity_image; // Warp Gate fill up rate
+    [SerializeField] Image bullet_num_image; // Warp Gate fill up rate
     [SerializeField] TextMeshProUGUI WG_capacity_text;
     [SerializeField] TextMeshProUGUI bullet_num_text;
     [SerializeField] List<Image> gun_mode_image; 
-    int max_bullet;
-    int require_capacity;
+    float max_bullet;
+    float require_capacity;
     void Awake()
     {
         playerShoot = FindAnyObjectByType<Player_Shoot>();
@@ -25,7 +28,7 @@ public class Index_bar_UI : MonoBehaviour
 
         WG_capacity_text.text = "0" + "/" + require_capacity;
         bullet_num_text.text = max_bullet + "/" + max_bullet;
-        WG_capacity_image.fillAmount = 0;
+        WG_capacity_image.fillAmount = 0.1f;
         UpdateGunStateUI(1);
     }
     void OnEnable()
@@ -43,8 +46,9 @@ public class Index_bar_UI : MonoBehaviour
     {
         
     }
-    void UpdateBulletCountUI(int ammo_left)
+    void UpdateBulletCountUI(float ammo_left)
     {
+        bullet_num_image.DOFillAmount(ammo_left/max_bullet, 0.5f);
         bullet_num_text.text = ammo_left + "/" + max_bullet;
     }
     void UpdateGunStateUI(int mode)
@@ -63,7 +67,7 @@ public class Index_bar_UI : MonoBehaviour
     }
     void UpdateWarpGateCapacity(float amount)
     {
-        WG_capacity_image.fillAmount = amount/require_capacity;
+        WG_capacity_image.DOFillAmount(amount/require_capacity,0.5f);
         WG_capacity_text.text = amount + "/" + require_capacity;
 
     }

@@ -43,6 +43,7 @@ public class Player_Movement : MonoBehaviour {
                 Physics2D.queriesStartInColliders = true;
                 if(hit.collider != null && hit.collider.GetComponent<WarpGate>() != null)
                 {
+                    pI.Disable();
                     EnterWarpGate?.Invoke(moveDir);
                 }
                 else if (hit.collider != null && hit.collider.GetComponent<IPushable>() != null && !IsObjectBlocked(hit.collider.gameObject, moveDir)) {
