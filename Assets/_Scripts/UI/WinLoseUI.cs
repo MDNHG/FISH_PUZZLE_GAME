@@ -77,10 +77,12 @@ public class WinLoseUI : MonoBehaviour
     }
     void Home()
     {
+        DOTween.KillAll();
         SceneManager.LoadScene(1);
     }
     void NextLevel()
     {
+        DOTween.KillAll();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     void Show(GameObject g)

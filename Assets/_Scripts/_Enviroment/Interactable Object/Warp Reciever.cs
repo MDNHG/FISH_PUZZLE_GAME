@@ -1,14 +1,22 @@
 using System;
+using System.Reflection.Metadata.Ecma335;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class WarpReciever : MonoBehaviour
 {
+    public event Action<float> IncreaseCurrentEnergy;
+    [SerializeField] ParticleSystem burst;
     [SerializeField] private int cur_e = 0;
     [SerializeField] private int require_e;
     [SerializeField] private WarpGate warp_gate;
 
     [SerializeField] private Sprite open;
 
+    void Start()
+    {
+        burst.Pause();
+    }
     void Update()
     {
         if(cur_e >= require_e)
@@ -22,11 +30,21 @@ public class WarpReciever : MonoBehaviour
         if(collider.gameObject.GetComponent<Bullet>() is Bullet bullet)
         {
             cur_e += bullet.GetEValue();
+            IncreaseCurrentEnergy?.Invoke(cur_e);
+            Instantiate(burst, gameObject.transform.position, quaternion.identity);
             Destroy(collider.gameObject);
         }
     }
     public void SetRequiredEnergy(int e)
     {
         require_e = e;
+    }
+    public int GetCurrentEnergy()
+    { 
+        return cur_e;
+    }
+    public int GetRequiredEnergy()
+    { 
+        return require_e;
     }
 }

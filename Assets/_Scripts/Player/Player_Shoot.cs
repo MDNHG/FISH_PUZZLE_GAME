@@ -1,7 +1,11 @@
+using System;
+using System.ComponentModel;
 using UnityEngine;
 
 [RequireComponent(typeof(Player_Movement))]
 public class Player_Shoot : MonoBehaviour {
+    public event Action<int> changeGunState;
+    public event Action<int> decreaseBullet;
     private Grid MAIN_GRID;
     [SerializeField] private int MAX_AMMO;
     [SerializeField] GameObject bullet_prefab;
@@ -23,10 +27,14 @@ public class Player_Shoot : MonoBehaviour {
         }
         if (pI.Player.Shoot.triggered && ammo_left > 0) {
             Shoot(bullet_speed);
+            decreaseBullet?.Invoke(ammo_left);
         }
         if (pI.Player.ChangeGunState.triggered) {
-            bullet_speed = (bullet_speed + 1) % 3 + 1;
+            bullet_speed = (bullet_speed) % 3+1;
+            Debug.Log(bullet_speed);
+            changeGunState?.Invoke(bullet_speed);
         }
+        
     }
     private void Shoot(int speed) {
         GameObject bullet = Instantiate(bullet_prefab, gameObject.transform.position, Quaternion.identity);
@@ -40,5 +48,9 @@ public class Player_Shoot : MonoBehaviour {
     public void SetMaxAmmo(int m_ammo)
     {
         MAX_AMMO = m_ammo;
+    }
+    public int GetMaxAmmo()
+    {
+        return MAX_AMMO;
     }
 }

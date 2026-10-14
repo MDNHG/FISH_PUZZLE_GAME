@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63171c5162f7e04409cbddb8aaaeacbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WarpReciever
+  burst: {fileID: 8012375871019958925, guid: e9feb99ea76b08744b964e29049ca0c8, type: 3}
   cur_e: 0
   require_e: 0
   warp_gate: {fileID: 0}
