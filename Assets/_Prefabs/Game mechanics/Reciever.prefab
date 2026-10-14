@@ -83,8 +83,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0.33963495, b: 0.3886792, a: 1}
+  m_Sprite: {fileID: 481269480, guid: 422e09c268d68b743805f9b623e8484d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -152,4 +152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf652d9b57ac440458a99e4524d7df15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Reciever
+  open: {fileID: -125510763, guid: 422e09c268d68b743805f9b623e8484d, type: 3}
+  close: {fileID: 481269480, guid: 422e09c268d68b743805f9b623e8484d, type: 3}
   Door: {fileID: 0}
