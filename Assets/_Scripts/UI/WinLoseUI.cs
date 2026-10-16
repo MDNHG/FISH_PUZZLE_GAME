@@ -25,7 +25,6 @@ public class WinLoseUI : MonoBehaviour
     [SerializeField] float delay_time = 5;
     Player_Input pI;
     private int current_option = 2;
-    bool levelWinned = false;
     bool gameEnded = false;
     
     void Start()
@@ -37,6 +36,7 @@ public class WinLoseUI : MonoBehaviour
         continueButton.onClick.AddListener(()=> NextLevel());
         continueButton.interactable = false;
         Hide(levelMenu);
+        HightlightButton();
     }
     void OnEnable()
     {
@@ -57,7 +57,7 @@ public class WinLoseUI : MonoBehaviour
         if (!gameEnded && Keyboard.current.escapeKey.wasPressedThisFrame) {
             Pause();
         } 
-        if(Keyboard.current.wKey.wasPressedThisFrame && levelMenu.activeInHierarchy)
+        if(Keyboard.current.upArrowKey.wasPressedThisFrame && levelMenu.activeInHierarchy)
         {
             current_option = (current_option + 1)%3;
             HightlightButton();
