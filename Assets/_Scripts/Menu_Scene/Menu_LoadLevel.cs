@@ -9,7 +9,7 @@ public class Menu_LoadLevel : MonoBehaviour {
 
     // Defaults to the first index option
     private int optionIndex = 0;
-    private int NO_OF_OPTIONS = 21; // 20 levels + back button
+    private int NO_OF_OPTIONS = 16; // 15 levels + back button
 
     void Start() {
         // Defaults to selecting first option first

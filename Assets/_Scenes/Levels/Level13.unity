@@ -407,7 +407,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4988125047999622583, guid: 4147819f7e354da44a2e665edafd7db2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 4147819f7e354da44a2e665edafd7db2, type: 3}
 --- !u!1001 &269042650
 PrefabInstance:
@@ -2244,6 +2247,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6425117381646725675, guid: c74d7f207062cee4d96eec4a674e72ed, type: 3}
   m_PrefabInstance: {fileID: 1521595710}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1582167201
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1582167203}
+  - component: {fileID: 1582167202}
+  m_Layer: 0
+  m_Name: AudioToPlay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1582167202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582167201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5239c307baed0ae48b85ce69da6b8f86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioToPlay
+  music: {fileID: 8300000, guid: a90d75cc38f2b5f48987d747db03b07b, type: 3}
+--- !u!4 &1582167203
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582167201}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.78405, y: -1.60816, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1617601141
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2366,6 +2414,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 472552680966138301, guid: 307c834b2f2668f4bb4edf76e443ef3f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 472552680966138301, guid: 307c834b2f2668f4bb4edf76e443ef3f, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 472552680966138301, guid: 307c834b2f2668f4bb4edf76e443ef3f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 472552680966138301, guid: 307c834b2f2668f4bb4edf76e443ef3f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 623589009111265706, guid: 307c834b2f2668f4bb4edf76e443ef3f, type: 3}
       propertyPath: m_Name
       value: UI
@@ -2383,6 +2447,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1046260523192227830, guid: 307c834b2f2668f4bb4edf76e443ef3f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2449303184296248630, guid: 307c834b2f2668f4bb4edf76e443ef3f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2449303184296248630, guid: 307c834b2f2668f4bb4edf76e443ef3f, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2449303184296248630, guid: 307c834b2f2668f4bb4edf76e443ef3f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2449303184296248630, guid: 307c834b2f2668f4bb4edf76e443ef3f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -4225,3 +4305,4 @@ SceneRoots:
   - {fileID: 734103643}
   - {fileID: 1809898861}
   - {fileID: 655818675}
+  - {fileID: 1582167203}
