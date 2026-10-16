@@ -21,9 +21,6 @@ public class Rotator : MonoBehaviour,IPushable
     [SerializeField] Direction turn_direction; 
     [SerializeField] Input input_direction;
 
-    void Start() {
-       
-    }
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.GetComponent<Bullet>() != null)

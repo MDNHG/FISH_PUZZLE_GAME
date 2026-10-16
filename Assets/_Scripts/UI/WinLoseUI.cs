@@ -23,7 +23,6 @@ public class WinLoseUI : MonoBehaviour
     [SerializeField] float delay_time = 5;
     Player_Input pI;
     private int current_option = 2;
-    bool levelWinned = false;
     bool gameEnded = false;
     
     void Start()
