@@ -4,76 +4,87 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.InputSystem;
+using System.Collections;
+using TMPro;
+using System.Data;
 
 public class WinLoseUI : MonoBehaviour
 {
-    [SerializeField] GameObject losingMenu;
-    [SerializeField] GameObject winningMenu;
-    [SerializeField] GameObject pauseMenu;
-    [SerializeField] List<Button> resetButton;
-    [SerializeField] List<Button> homeButton;
-    [SerializeField] List<Button> continueButton;
+    [SerializeField] GameObject levelMenu;
+    [SerializeField] Button resetButton;
+    [SerializeField] Button homeButton;
+    [SerializeField] Button continueButton;
+    [SerializeField] TextMeshProUGUI menuTitle;
+    [Header("Color setup")]
+    [SerializeField] Color win_color;
+    [SerializeField] Color lose_color;
+    [SerializeField] Color pause_color;
+    [Header("Timing Setup")]
+    [SerializeField] float delay_time = 5;
     Player_Input pI;
+    private int current_option = 2;
+    bool levelWinned = false;
     bool gameEnded = false;
     
     void Start()
     {
         pI = FindAnyObjectByType<Player_Movement>().pI;
-        foreach(Button button in resetButton)
-        {
-           button.onClick.AddListener(()=> Reset());
-        }
-         foreach(Button button in homeButton)
-        {
-           button.onClick.AddListener(()=> Home());
-        }
-          foreach(Button button in continueButton)
-        {
-           button.onClick.AddListener(()=> NextLevel());
-        }
-        Hide(losingMenu);
-        Hide(pauseMenu);
-        Hide(winningMenu);
+        
+        resetButton.onClick.AddListener(()=> Reset());
+        homeButton.onClick.AddListener(()=> Home());
+        continueButton.onClick.AddListener(()=> NextLevel());
+        continueButton.interactable = false;
+        Hide(levelMenu);
     }
     void OnEnable()
     {
         Door.killPlayer += Losing;
-        Player_Movement.EnterWarpGate += Winning;
+        Player_WinLoseHandler.Show_Win_Menu += Winning;
         Laser.killPlayer += Losing;
         
     }
     void OnDisable()
     {
         Door.killPlayer -= Losing;
-        Player_Movement.EnterWarpGate -= Winning;
+         Player_WinLoseHandler.Show_Win_Menu -= Winning;
         Laser.killPlayer -= Losing;
         
     }
     void Update()
     {
         if (!gameEnded && Keyboard.current.escapeKey.wasPressedThisFrame) {
-            if (!pauseMenu.activeInHierarchy) {
-                Show(pauseMenu);
-            }
-            else {
-                Hide(pauseMenu);
-            }
-        }        
+            Pause();
+        } 
+        if(Keyboard.current.rightArrowKey.wasPressedThisFrame)
+        {
+            current_option = (current_option + 1)%3;
+        }    
+        if(Keyboard.current.leftArrowKey.wasPressedThisFrame)
+        {
+            current_option = (current_option + 1)%3;
+        }    
     }
     void Losing()
     {
-        gameEnded = true;
-        Show(losingMenu);
+       StartCoroutine(ProcessLosing(delay_time));
     }
     void Winning()
     {
-        gameEnded = true;
-        Show(winningMenu);
+        StartCoroutine(ProcessWinning(delay_time));
     }
     void Reset()
     {
         DOTween.KillAll();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    void Pause()
+    {
+         if (!levelMenu.activeInHierarchy) {
+                Show(levelMenu);
+            }
+            else {
+                Hide(levelMenu);
+            }
     }
     void Home()
     {
@@ -97,5 +108,25 @@ public class WinLoseUI : MonoBehaviour
         g.SetActive(false);
         pI.Player.Enable();
         Time.timeScale = 1;
+    }
+    IEnumerator ProcessWinning(float delay)
+    {
+        pI.Player.Disable();
+        yield return new WaitForSecondsRealtime(delay);
+        menuTitle.text = "YOU ESCAPED";
+        menuTitle.color = win_color;
+        continueButton.interactable = true;
+        gameEnded = true;
+        Show(levelMenu);
+    }
+    IEnumerator ProcessLosing(float delay)
+    {
+        pI.Player.Disable();
+        yield return new WaitForSecondsRealtime(delay);
+        menuTitle.text = "YOU DIED";
+        menuTitle.color = lose_color;
+        continueButton.interactable = false;
+        gameEnded = true;
+        Show(levelMenu);
     }
 }

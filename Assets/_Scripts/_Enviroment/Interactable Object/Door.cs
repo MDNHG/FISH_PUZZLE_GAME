@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,13 +12,16 @@ public class Door : MonoBehaviour
     private BoxCollider2D col;
     public Sprite door_open;
     public Sprite door_closed;
+    [SerializeField] private GameObject countdown_sprite;
+    [SerializeField] private TextMeshPro countdown;
 
 
     void Start()
     {
         Player_Movement.Move += DecreaseTickOnPlayerMove;
         col = gameObject.GetComponent<BoxCollider2D>();
-        spt = gameObject.GetComponent<SpriteRenderer>();        
+        spt = gameObject.GetComponent<SpriteRenderer>();       
+        countdown_sprite.SetActive(false); 
         Deactivate();
     }
 
@@ -35,11 +39,13 @@ public class Door : MonoBehaviour
     private void Activate()
     {
         col.enabled = false;
+        countdown_sprite.SetActive(true);
         spt.sprite = door_open;
     }
     private void Deactivate()
     {    
         CheckOverlap();
+        countdown_sprite.SetActive(false);
         col.enabled = true;
         spt.sprite = door_closed;
     }
@@ -47,14 +53,14 @@ public class Door : MonoBehaviour
     public void ChangeTick(int amount)
     {
         tick_left += amount;
-        Debug.Log(tick_left);
+        countdown.text = tick_left.ToString();
     }
     private void DecreaseTickOnPlayerMove()
     {
         if(tick_left > 0)
         {
         tick_left--;
-        Debug.Log(tick_left);
+        countdown.text = tick_left.ToString();
         }
     }
     private void CheckOverlap()

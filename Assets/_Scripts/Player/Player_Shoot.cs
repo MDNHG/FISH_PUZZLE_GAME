@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Player_Movement))]
 public class Player_Shoot : MonoBehaviour {
     public event Action<int> changeGunState;
-    public event Action<int> decreaseBullet;
+    public event Action<float> decreaseBullet;
     private Grid MAIN_GRID;
     [SerializeField] private int MAX_AMMO;
     [SerializeField] GameObject bullet_prefab;
