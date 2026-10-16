@@ -3459,7 +3459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a8d35d35da090545a5f926cc1555ccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuNumber_LoadLevel
-  level: 
+  level: Level15
 --- !u!1 &1917513208
 GameObject:
   m_ObjectHideFlags: 0
@@ -3912,7 +3912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a8d35d35da090545a5f926cc1555ccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuNumber_LoadLevel
-  level: 
+  level: Level14
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
