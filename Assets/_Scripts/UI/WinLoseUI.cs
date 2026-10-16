@@ -19,6 +19,8 @@ public class WinLoseUI : MonoBehaviour
     [SerializeField] Color win_color;
     [SerializeField] Color lose_color;
     [SerializeField] Color pause_color;
+    [SerializeField] Color current_option_color;
+    [SerializeField] Color default_color;
     [Header("Timing Setup")]
     [SerializeField] float delay_time = 5;
     Player_Input pI;
@@ -55,14 +57,33 @@ public class WinLoseUI : MonoBehaviour
         if (!gameEnded && Keyboard.current.escapeKey.wasPressedThisFrame) {
             Pause();
         } 
-        if(Keyboard.current.rightArrowKey.wasPressedThisFrame)
+        if(Keyboard.current.wKey.wasPressedThisFrame && levelMenu.activeInHierarchy)
         {
             current_option = (current_option + 1)%3;
+            HightlightButton();
+
         }    
-        if(Keyboard.current.leftArrowKey.wasPressedThisFrame)
+        if(Keyboard.current.downArrowKey.wasPressedThisFrame && levelMenu.activeInHierarchy)
         {
             current_option = (current_option + 1)%3;
-        }    
+            HightlightButton();
+        }
+        if(Keyboard.current.enterKey.wasPressedThisFrame && levelMenu.activeInHierarchy)
+        {
+            switch(current_option)
+        {
+            case 0:
+            Home();
+            break;
+            case 1:
+            Reset();
+            break;
+            case 2:
+            if(continueButton.interactable)
+            NextLevel();
+            break;
+        }
+        }
     }
     void Losing()
     {
@@ -128,5 +149,23 @@ public class WinLoseUI : MonoBehaviour
         continueButton.interactable = false;
         gameEnded = true;
         Show(levelMenu);
+    }
+    void HightlightButton()
+    {
+        homeButton.GetComponentInChildren<TextMeshProUGUI>().color = default_color;
+        resetButton.GetComponentInChildren<TextMeshProUGUI>().color = default_color;
+        continueButton.GetComponentInChildren<TextMeshProUGUI>().color = default_color;
+        switch(current_option)
+        {
+            case 0:
+            homeButton.GetComponentInChildren<TextMeshProUGUI>().color = current_option_color;
+            break;
+            case 1:
+            resetButton.GetComponentInChildren<TextMeshProUGUI>().color = current_option_color;
+            break;
+            case 2:
+            continueButton.GetComponentInChildren<TextMeshProUGUI>().color = current_option_color;
+            break;
+        }
     }
 }
