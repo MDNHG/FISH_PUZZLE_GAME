@@ -65,7 +65,7 @@ public class WinLoseUI : MonoBehaviour
         }    
         if(Keyboard.current.downArrowKey.wasPressedThisFrame && levelMenu.activeInHierarchy)
         {
-            current_option = (current_option + 1)%3;
+            current_option = (current_option - 1)%3;
             HightlightButton();
         }
         if(Keyboard.current.enterKey.wasPressedThisFrame && levelMenu.activeInHierarchy)
