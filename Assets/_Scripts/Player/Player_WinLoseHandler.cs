@@ -6,6 +6,7 @@ using UnityEngine;
 public class Player_WinLoseHandler : MonoBehaviour
 {
     public static event Action Show_Win_Menu;
+    public static event Action Winning;
     private GameObject player;
     [SerializeField] private ParticleSystem win_burst;
     [SerializeField] private ParticleSystem die_burst;
@@ -46,7 +47,8 @@ public class Player_WinLoseHandler : MonoBehaviour
         {
             Destroy(player);
             Instantiate(win_burst, gameObject.transform.position, Quaternion.identity);
-            Show_Win_Menu?.Invoke();  
+            Show_Win_Menu?.Invoke(); 
+            Winning?.Invoke();
         }
         );
     }

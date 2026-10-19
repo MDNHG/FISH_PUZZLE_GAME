@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,7 +11,6 @@ public class Menu_LoadLevel : MonoBehaviour {
     // Defaults to the first index option
     private int optionIndex = 0;
     private int NO_OF_OPTIONS = 16; // 15 levels + back button
-
     void Start() {
         // Defaults to selecting first option first
         HighlightOption(optionIndex);
@@ -53,7 +53,7 @@ public class Menu_LoadLevel : MonoBehaviour {
         }
         else {
             var text = menuOption[optionIndex].GetComponent<MenuNumber_LoadLevel>().level;
-            if (text != null) {
+            if (text != null && LevelUnlock.level_unlock_state[optionIndex] == 1) {
                 SceneManager.LoadScene(text);
             }
         }

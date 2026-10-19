@@ -40,4 +40,8 @@ public class LevelManager : MonoBehaviour
             $"Level: {levelID}, Ammo: {max_ammo}, Power: {require_e}"
         );
     }
+    public int GetLevelID()
+    {
+        return levelID;
+    }
 }
