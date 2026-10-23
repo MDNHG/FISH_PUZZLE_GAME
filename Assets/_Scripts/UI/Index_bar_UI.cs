@@ -29,18 +29,16 @@ public class Index_bar_UI : MonoBehaviour
         WG_capacity_text.text = "0" + "/" + require_capacity;
         bullet_num_text.text = max_bullet + "/" + max_bullet;
         WG_capacity_image.fillAmount = 0.1f;
-        UpdateGunStateUI(1);
+        //UpdateGunStateUI(1);
     }
     void OnEnable()
     {
         playerShoot.decreaseBullet += UpdateBulletCountUI;
-        playerShoot.changeGunState += UpdateGunStateUI;
         warpReciever.IncreaseCurrentEnergy += UpdateWarpGateCapacity;
     }
     void OnDisable()
     {
         playerShoot.decreaseBullet -= UpdateBulletCountUI;
-        playerShoot.changeGunState -= UpdateGunStateUI;
     }
     void Update()
     {
@@ -51,8 +49,10 @@ public class Index_bar_UI : MonoBehaviour
         bullet_num_image.DOFillAmount(ammo_left/max_bullet, 0.5f);
         bullet_num_text.text = ammo_left + "/" + max_bullet;
     }
+    /*
     void UpdateGunStateUI(int mode)
     {
+    
         for(int i = 1 ; i <= gun_mode_image.Count; i++)
         {
             if(i == mode)
@@ -64,7 +64,9 @@ public class Index_bar_UI : MonoBehaviour
                 gun_mode_image[i-1].color = Color.black;
             }
         }
+        
     }
+    */
     void UpdateWarpGateCapacity(float amount)
     {
         WG_capacity_image.DOFillAmount(amount/require_capacity,0.5f);

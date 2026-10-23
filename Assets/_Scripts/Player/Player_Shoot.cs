@@ -4,13 +4,12 @@ using UnityEngine;
 
 [RequireComponent(typeof(Player_Movement))]
 public class Player_Shoot : MonoBehaviour {
-    public event Action<int> changeGunState;
     public event Action<float> decreaseBullet;
     private Grid MAIN_GRID;
     [SerializeField] private int MAX_AMMO;
     [SerializeField] GameObject bullet_prefab;
     private int ammo_left;
-    private int bullet_speed = 1;
+    private int bullet_speed = 3;
     Player_Input pI;
     Vector2 shoot_direction;
 
@@ -29,11 +28,13 @@ public class Player_Shoot : MonoBehaviour {
             Shoot(bullet_speed);
             decreaseBullet?.Invoke(ammo_left);
         }
+        /*
         if (pI.Player.ChangeGunState.triggered) {
             bullet_speed = (bullet_speed) % 3+1;
             Debug.Log(bullet_speed);
             changeGunState?.Invoke(bullet_speed);
         }
+        */
         
     }
     private void Shoot(int speed) {
