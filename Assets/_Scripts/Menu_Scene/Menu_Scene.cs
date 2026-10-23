@@ -19,14 +19,11 @@ public class Menu_Scene : MonoBehaviour {
         // Defaults to selecting first option first
         HighlightOption(optionIndex);
     }
-
     void Update() {
-        // Get the current keyboard. It is null if no keyboard is connected.
         Keyboard keyboard = Keyboard.current;
         if (keyboard == null)
             return;
 
-        // Alternating between menu options
         if (keyboard.downArrowKey.wasPressedThisFrame || keyboard.sKey.wasPressedThisFrame) {
             optionIndex = (optionIndex + 1) % NO_OF_OPTIONS;
             HighlightOption(optionIndex);

@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using System;
 public class ButtonVisual : MonoBehaviour
 {
-
+    private List<Button> button_list;
     private List<Image> button_image_list;
     [SerializeField] Color unlock_color;
     [SerializeField] Color lock_color;
     
     void Start()
     {
+        button_list = new List<Button>();
         button_image_list = new List<Image>();
         foreach(Image temp in GetComponentsInChildren<Image>())
         {
@@ -38,7 +39,6 @@ public class ButtonVisual : MonoBehaviour
 
     }
     }
-    // Update is called once per frame
     void Update()
     {
         
