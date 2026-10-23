@@ -43,6 +43,7 @@ public class Menu_LoadLevel : MonoBehaviour {
         // Confirming option
         if (keyboard.zKey.wasPressedThisFrame || keyboard.enterKey.wasPressedThisFrame) {
             ChooseOption();
+            AudioBus.SendButtonClickAudio();
         }
     }
 

@@ -7,7 +7,7 @@ public class AudioToPlay : MonoBehaviour
 
     void OnEnable()
     {
-        LoadLevelByButton.playClickButton +=  PlayClick;
+        AudioBus.PlayButtonClickAudio +=  PlayClick;
     }
     void Start() {
         AudioManager.Instance.PlayMusic(music);
