@@ -2,6 +2,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using System.Collections.Generic;
+
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -10,6 +13,8 @@ using UnityEditor;
 public class Menu_Scene : MonoBehaviour {
     public string nextScene;
     public TMP_Text[] menuOption;
+    [SerializeField] Button start_button;
+    [SerializeField] Button quit_button;
 
     // Defaults to the first index option
     private int optionIndex = 0;
@@ -18,22 +23,31 @@ public class Menu_Scene : MonoBehaviour {
     void Start() {
         // Defaults to selecting first option first
         HighlightOption(optionIndex);
+        start_button.onClick.AddListener(()=>
+        {
+            AudioBus.SendButtonClickAudio();
+            SceneManager.LoadScene(nextScene);
+        });
+        quit_button.onClick.AddListener(()=>
+        {
+            AudioBus.SendButtonClickAudio();
+            Application.Quit(); 
+        });
     }
-
     void Update() {
-        // Get the current keyboard. It is null if no keyboard is connected.
         Keyboard keyboard = Keyboard.current;
         if (keyboard == null)
             return;
 
-        // Alternating between menu options
         if (keyboard.downArrowKey.wasPressedThisFrame || keyboard.sKey.wasPressedThisFrame) {
             optionIndex = (optionIndex + 1) % NO_OF_OPTIONS;
             HighlightOption(optionIndex);
+            AudioBus.SendChangeOptionAudio();
         }
         else if (keyboard.upArrowKey.wasPressedThisFrame || keyboard.wKey.wasPressedThisFrame) {
             optionIndex = (optionIndex + (NO_OF_OPTIONS - 1)) % NO_OF_OPTIONS;
             HighlightOption(optionIndex);
+            AudioBus.SendChangeOptionAudio();
         }
 
         // Confirming option

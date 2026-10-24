@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "FISH_PUZZLE_GAME.slnx"
+    "dotnet.defaultSolution": "Little puzzle game.slnx"
 }
