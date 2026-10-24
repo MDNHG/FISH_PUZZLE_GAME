@@ -26,18 +26,22 @@ public class Menu_LoadLevel : MonoBehaviour {
         if (keyboard.downArrowKey.wasPressedThisFrame || keyboard.sKey.wasPressedThisFrame) {
             optionIndex = (optionIndex + 5) % NO_OF_OPTIONS;
             HighlightOption(optionIndex);
+            AudioBus.SendChangeOptionAudio();
         }
         else if (keyboard.upArrowKey.wasPressedThisFrame || keyboard.wKey.wasPressedThisFrame) {
             optionIndex = (optionIndex + (NO_OF_OPTIONS - 5)) % NO_OF_OPTIONS;
             HighlightOption(optionIndex);
+            AudioBus.SendChangeOptionAudio();
         }
         else if (keyboard.leftArrowKey.wasPressedThisFrame || keyboard.aKey.wasPressedThisFrame) {
             optionIndex = (optionIndex + NO_OF_OPTIONS - 1) % NO_OF_OPTIONS;
             HighlightOption(optionIndex);
+            AudioBus.SendChangeOptionAudio();
         }
         else if (keyboard.rightArrowKey.wasPressedThisFrame || keyboard.dKey.wasPressedThisFrame) {
             optionIndex = (optionIndex + 1) % NO_OF_OPTIONS;
             HighlightOption(optionIndex);
+            AudioBus.SendChangeOptionAudio();
         }
 
         // Confirming option

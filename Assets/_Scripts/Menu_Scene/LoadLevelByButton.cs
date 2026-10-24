@@ -15,7 +15,7 @@ public class LoadLevelByButton : MonoBehaviour
             button.onClick.AddListener(() =>
             {
                 SceneManager.LoadScene("Level" + (button_list.IndexOf(button)+1).ToString()); 
-                playClickButton?.Invoke();
+                AudioBus.SendButtonClickAudio();
             });
         }
     }

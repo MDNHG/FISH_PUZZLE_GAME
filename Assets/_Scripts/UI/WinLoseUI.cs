@@ -31,7 +31,7 @@ public class WinLoseUI : MonoBehaviour
     {
         pI = FindAnyObjectByType<Player_Movement>().pI;
         
-        resetButton.onClick.AddListener(()=> Reset());
+        resetButton.onClick.AddListener(()=> Reset() );
         homeButton.onClick.AddListener(()=> Home());
         continueButton.onClick.AddListener(()=> NextLevel());
         continueButton.interactable = false;
@@ -59,14 +59,17 @@ public class WinLoseUI : MonoBehaviour
         } 
         if(Keyboard.current.upArrowKey.wasPressedThisFrame && levelMenu.activeInHierarchy)
         {
-            current_option = (current_option + 1)%3;
+            current_option = (current_option - 1)%3;
             HightlightButton();
+            AudioBus.SendChangeOptionAudio();
 
         }    
         if(Keyboard.current.downArrowKey.wasPressedThisFrame && levelMenu.activeInHierarchy)
         {
-            current_option = (current_option - 1)%3;
+
+            current_option = Mathf.Abs(current_option + 1)%3;
             HightlightButton();
+            AudioBus.SendChangeOptionAudio();
         }
         if(Keyboard.current.enterKey.wasPressedThisFrame && levelMenu.activeInHierarchy)
         {
@@ -100,6 +103,7 @@ public class WinLoseUI : MonoBehaviour
     }
     void Pause()
     {
+        AudioBus.SendButtonClickAudio();
          if (!levelMenu.activeInHierarchy) {
                 Show(levelMenu);
             }
@@ -109,11 +113,13 @@ public class WinLoseUI : MonoBehaviour
     }
     void Home()
     {
+        AudioBus.SendButtonClickAudio();
         DOTween.KillAll();
         SceneManager.LoadScene(1);
     }
     void NextLevel()
     {
+        AudioBus.SendButtonClickAudio();
         DOTween.KillAll();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
