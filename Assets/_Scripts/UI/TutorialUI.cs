@@ -31,7 +31,7 @@ public class TutorialUI : MonoBehaviour
         // Set up UI button events.
         tutorialButton.onClick.AddListener(ShowTutorial);
         doneButton.onClick.AddListener(HideTutorial);
-
+        videoContainer.localScale = Vector3.one * 0.9f;
         tutorialPanel.SetActive(false);
         bool hasTuto = HasTutorial();
 
@@ -49,10 +49,23 @@ public class TutorialUI : MonoBehaviour
         
     }
 
-    private void Start()
+    /*private void Start()
     {
         // Show tutorial automatically when the level loads.
         if (HasTutorial()) ShowTutorial();
+    }*/
+    private IEnumerator Start()
+    {
+        if (!HasTutorial())
+            yield break;
+
+        // Allow the scene to render first.
+        yield return null;
+
+        // Small delay for a more noticeable transition.
+        yield return new WaitForSecondsRealtime(0.15f);
+
+        ShowTutorial();
     }
 
     private bool HasTutorial()
