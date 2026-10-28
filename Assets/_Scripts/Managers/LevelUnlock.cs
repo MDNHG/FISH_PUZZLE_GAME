@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class LevelUnlock : MonoBehaviour
 {
@@ -28,10 +29,17 @@ public class LevelUnlock : MonoBehaviour
         {
             level_unlock_state[i] = 0;
         }
+        
     }
     void Update()
     {
-        
+        if(Keyboard.current.f1Key.wasPressedThisFrame)
+        {
+            for(int i = 2; i <= 15; i++)
+        {
+            level_unlock_state[i] = 1;
+        }
+        }
     }
     void LevelUnlockbyID()
     {
